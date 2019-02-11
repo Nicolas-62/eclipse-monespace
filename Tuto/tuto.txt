@@ -1,0 +1,4 @@
+En fait, avec UML, 
+vous pouvez modéliser toutes les étapes du développement d'une application informatique, 
+de sa conception à la mise en route, 
+grâce à des diagrammes. 

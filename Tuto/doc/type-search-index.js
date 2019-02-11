@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.tuto.ville","l":"Capitale"},{"p":"com.tuto.ville","l":"Main"},{"p":"com.tuto.ville","l":"NbHabitantException"},{"p":"com.tuto.ville","l":"NomVilleException"},{"p":"com.tuto.ville","l":"Ville"}]
