@@ -3,6 +3,8 @@ public class TestCarnetDeContact {
 
 	public static void main(String[] args) {
 		
+		//j'ajoute du texte pour tester git...
+		
 		int choix = 0;
 		String[][] tabContact = new String[30][4];
 //		System.out.println(tabContact[0][0]);
