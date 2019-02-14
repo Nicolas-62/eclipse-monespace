@@ -4,7 +4,6 @@ public class TestCarnetDeContact {
 	public static void main(String[] args) {
 		
 		//j'ajoute du texte pour tester git...
-		
 		int choix = 0;
 		String[][] tabContact = new String[30][4];
 //		System.out.println(tabContact[0][0]);
@@ -20,6 +19,7 @@ public class TestCarnetDeContact {
 			System.out.println(" ( 3 ) . Modifier un contact");
 			System.out.println(" ( 4 ) . Supprimer un contact");
 			System.out.println(" ( 5 ) . Afficher tout le contenu du carnet");
+			
 			System.out.println(" (-1 ) . Quitter");
 			System.out.println("-------------------------------------------");			
 			choix = CarnetDeContact.saisieChoix();

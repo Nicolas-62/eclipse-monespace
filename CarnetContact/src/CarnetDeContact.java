@@ -60,31 +60,59 @@ public class CarnetDeContact {
 		return choix;
 	}
 	public static void saisieContact(String[][] tabContact, int indice) {
-		
+		String groupe = "";
 		String nom="";
 		String prenom = "";
 		String numTel = "";
 		String email = "";
 		String contient="aàäbecdeèéfghijklmnopqrstuvwxyz";
-		nom = saisieString(nom, "Nom", 25, contient);
-		prenom = saisieString(prenom, "prenom", 25, contient);
+		groupe = saisieGroupe();
+		nom = saisieString(nom, "Nom", 2, 25, contient);
+		prenom = saisieString(prenom, "prenom", 2, 25, contient);
 		numTel = saisieNumero(numTel);
 		email = saisieMail(email);
 		// enregistrement du contact dans le carnet à la place libre trouvée
-		tabContact[indice][0] = nom;
-		tabContact[indice][1] = prenom;
-		tabContact[indice][2] = numTel;
-		tabContact[indice][3] = email;			
+		tabContact[indice][0] = groupe;
+		tabContact[indice][1] = nom;
+		tabContact[indice][2] = prenom;
+		tabContact[indice][3] = numTel;
+		tabContact[indice][4] = email;			
 	}
-	public static String saisieString(String chaine, String type, int maxLength, String contient) {
+	public static String saisieGroupe() {
+		String[] tabGroupes = {"amis", "famille", "collègues", "clients"};
+		boolean saisieValide;
+		String choixGroupe = "";
+		int groupe=0;
+		do {
+			System.out.println("Sasie du groupe : ");
+			for(int i=0; i<tabGroupes.length; i++) {
+				System.out.println(" "+i+". "+tabGroupes[i]);
+			}
+			System.out.println("Veuillez saisir le n° du groupe dans le carnet de contact :");
+			groupe = Clavier.readInt();
+			saisieValide=true;
+			while(groupe<0 || groupe>3) {
+				System.out.println("Veuillez saisir un numéro valide");
+				groupe = Clavier.readInt();
+			}
+		}while(!saisieValide);
+		switch(groupe) {
+			case 0 : choixGroupe = "amis";break;
+			case 1 : choixGroupe = "famille";break;
+			case 2 : choixGroupe = "collègues";break;
+			case 3 : choixGroupe = "clients";break;
+		}	
+		return choixGroupe;		
+	}
+	public static String saisieString(String chaine, String type, int minLength, int maxLength, String contient) {
 		boolean saisieValide;
 		do{
 			saisieValide = true; 
 			System.out.println(type+" ?");
 			chaine = Clavier.readString();
 			chaine = chaine.trim().toLowerCase();
-			if(chaine.length()<2) {
-				System.out.println("Vous devez saisir au moins deux caractères");
+			if(chaine.length()<minLength) {
+				System.out.println("Vous devez saisir au moins "+minLength+" caractères");
 				saisieValide=false;
 				continue;
 			}
@@ -102,7 +130,7 @@ public class CarnetDeContact {
 				 * on lui envoie la représentation en string de notre caractère à analyser.
 				 */
 				if(!contient.contains(String.valueOf(chaineTabChar[i]))) {
-					System.out.println("Votre "+type+" ne doit pas comporter de numéros ni de caractères spéciaux");
+					System.out.println("Votre "+type+" contient des caractères non valides");
 					saisieValide=false;
 					break;
 				}
@@ -120,6 +148,7 @@ public class CarnetDeContact {
 			saisieValide=true;
 			if(chaine.charAt(0)!='0') {
 				System.out.println("Votre numéro doit commencer par zéro.");
+				saisieValide=false;
 			}
 			if(chaine.length()!=10) {
 				System.out.println("Votre numéro doit comporter 10 chiffres.");
@@ -138,15 +167,16 @@ public class CarnetDeContact {
 	public static String saisieMail(String chaine) {
 		boolean saisieValide;
 		String saisie1="", saisie2="", saisie3="", email="";
-		String contient = "abecdefghijklmnopqrstuvwxyz";
+		String contient = "abecdefghijklmnopqrstuvwxyz.-_123456789";
 		System.out.println("Format de l'adresse : \"saisie1\"@\"saisie2.\"saisie3\"");
 		do {
 			saisieValide=true;
-			email+=saisieString(saisie1,"Saisie1", 30, contient);
+			email+=saisieString(saisie1,"Saisie1", 1, 30, contient);
 			email+="@";
-			email+=saisieString(saisie2,"Saisie2", 10, contient);
+			email+=saisieString(saisie2,"Saisie2", 2, 30, contient);
 			email+=".";
-			email+=saisieString(saisie3,"Saisie3", 4, contient);			
+			contient = "abecdefghijklmnopqrstuvwxyz";
+			email+=saisieString(saisie3,"Saisie3", 2, 4, contient);			
 		}while(!saisieValide);
 		return email;
 		
@@ -212,10 +242,15 @@ public class CarnetDeContact {
 			System.out.println("Aucun contact dans le carnet");
 		}else {		
 			afficherCarnet(tabContact);
-			int indice=0;
+			int index=0;
 			System.out.println("Veuillez saisir l'index du contact à modifier : ");
-			indice = Clavier.readInt();
-			saisieContact(tabContact, indice);
+			index = Clavier.readInt();
+			
+			while (tabContact[index][0] == null) {
+				System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
+				index = Clavier.readInt();
+			}
+			saisieContact(tabContact, index);
 			System.out.println("Contact modifié !");
 		}
 	}	
@@ -228,6 +263,10 @@ public class CarnetDeContact {
 			afficherCarnet(tabContact);
 			System.out.println("Veuillez saisir l'index du contact à supprimer : ");
 			index = Clavier.readInt();
+			while (tabContact[index][0] == null) {
+				System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
+				index = Clavier.readInt();
+			}
 			for(int i=0; i<tabContact[index].length; i++) {
 				tabContact[index][i] = null;
 			}

@@ -1,16 +1,20 @@
+package com.pilote.cours;
 public class PiloteInstructeur extends Pilote{
 	
 	private String dateLicenceInstructeur;
 	
-	public PiloteInstructeur() {}
 	
 	public PiloteInstructeur(String nom, String prenom) {
 		super(nom, prenom);
 		this.dateLicenceInstructeur = "18/02/2008";
 	}
 	
-	public void enseignerDecollage() {}
-	public void enseignerAtterrissage() {}
+	public void enseignerDecollage() {
+		System.out.println("J'enseigne le décollage");
+	}
+	public void enseignerAtterrissage() {
+		System.out.println("J'enseigne l'atterrissage");
+	}
 	/**
 	 * @return the dateLicenceInstructeur
 	 */
