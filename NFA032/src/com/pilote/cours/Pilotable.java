@@ -7,6 +7,7 @@ public interface Pilotable {
 	long getPuissance();
 	void setPuissance(long puissanceCible);
 	long getAltitude();
+	
 	void rentrerTrainAtterrissage();
 	void sortirTrainAtterrissage();
 	void inclinerVolets(long angle);

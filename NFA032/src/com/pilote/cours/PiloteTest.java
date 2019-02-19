@@ -46,9 +46,9 @@ public class PiloteTest {
 		 * Utilisation de l'interface comme un type
 		 * Permet d'appliquer des methodes sans connaître la nature réelle de l'objet
 		 */
-		Pilotable pilotable = new Avion();
-		
+		Pilotable pilotable = new Avion();		
 		unPilote.faireDecoller(pilotable);
+		
 	}
 
 }

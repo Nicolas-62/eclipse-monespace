@@ -4,7 +4,7 @@ package com.pilote.cours;
 public abstract class Collaborateur {
 
 	protected long matricule;
-	protected String nom;
+	private String nom;
 	protected String prenom;
 	
 	public Collaborateur(String nom, String prenom) {

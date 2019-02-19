@@ -5,10 +5,10 @@ public class TestCarnetDeContact {
 		
 		//j'ajoute du texte pour tester git...
 		int choix = 0;
-		String[][] tabContact = new String[30][4];
+		String[][] tabContact = new String[30][5];
 //		System.out.println(tabContact[0][0]);
 //		System.exit(1);
-		tabContact = CarnetDeContact.lireTableau(tabContact);
+		tabContact = CarnetDeContact.lireCarnet(tabContact);
 		
 		while(true) {
 			System.out.println("-------------------------------------------");
@@ -18,11 +18,11 @@ public class TestCarnetDeContact {
 			System.out.println(" ( 2 ) . Chercher et afficher un contact");
 			System.out.println(" ( 3 ) . Modifier un contact");
 			System.out.println(" ( 4 ) . Supprimer un contact");
-			System.out.println(" ( 5 ) . Afficher tout le contenu du carnet");
+			System.out.println(" ( 5 ) . Afficher le contenu du carnet");
 			
 			System.out.println(" (-1 ) . Quitter");
 			System.out.println("-------------------------------------------");			
-			choix = CarnetDeContact.saisieChoix();
+			choix = CarnetDeContact.saisieChoixMenu();
 			
 			switch(choix)
 			{
@@ -31,12 +31,10 @@ public class TestCarnetDeContact {
 			case 3 : CarnetDeContact.modifierContact(tabContact); break;
 			case 4 : CarnetDeContact.supprimerContact(tabContact); break;
 			case 5 : CarnetDeContact.afficherCarnetContacts(tabContact); break;
-			case -1 : CarnetDeContact.ecrireTableau(tabContact); System.exit(1);
-			default : CarnetDeContact.ecrireTableau(tabContact); System.exit(1);
+			case -1 : CarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
+			default : CarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
 			}
 		}
-		
-
 	}
 
 }

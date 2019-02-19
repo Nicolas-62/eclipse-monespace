@@ -1,10 +1,18 @@
 package com.pilote.cours;
 
-public class Avion implements Pilotable{
+public class Avion implements Pilotable, GestionnaireRadio{
 	
 	private Moteur moteur;
 	private CapteurAltitude capteurAltitude;
+	
+	Avion(){
+		this.moteur = new Moteur();
+		this.capteurAltitude = new CapteurAltitude();
+	}
 
+	public void emettreSignalradio() {
+		System.out.println("Signal radio...");
+	}
 	public long getPuissance() { 
 		return moteur.getPuissance(); 
 	}
