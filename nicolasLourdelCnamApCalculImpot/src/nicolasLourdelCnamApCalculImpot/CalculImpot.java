@@ -54,7 +54,7 @@ public class CalculImpot {
 					System.out.println("Erreur, veuillez répondre par oui ou non : ");
 				}
 			}catch(InputMismatchException i) {
-				System.out.println("Erreur de saisie, veuillez saisir un nombre.");
+				System.out.println("Erreur de saisie, veuillez saisir oui ou non.");
 			}
 		}		
 		// Saisie du nombre d'enfants
