@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Simulateur {
 	public static void main(String[] args) {
+		// Instantiation objet pour saisies clavier
+		Scanner sc = new Scanner(System.in);
 		// Variables ;
 		String nom, prenom, dateNais, typeContrat;
 		boolean statutMarital;
@@ -14,74 +16,81 @@ public class Simulateur {
 		System.out.println("   Contrat d'assurance : Simulateur de devis    ");
 		System.out.println("------------------------------------------------");
 		// Q1 : Saisie du nom	
-		nom = saisieString("nom");
+		nom = saisieString("nom",sc);
 		// Q2 : Saisie du prenom	
-		prenom = saisieString("prenom");
+		prenom = saisieString("prenom",sc);
 		// Q3 Saisie de la date de naissance
-		dateNais = saisieString("date de naissance (format JJ/MM/AAAA");
+		dateNais = saisieString("date de naissance",sc);
 		// Q4 Saisie du statut marital		
 		System.out.println("Etes vous marié ? oui/non");
-		statutMarital = saisieBoolean();
+		statutMarital = saisieBoolean(sc);
 		// Q5 saisie du nombre d'enfants
 		System.out.print("Entrez le nombre d'enfants à votre charge : ");
-		nbEnfant = (int)saisieNombre(0,10);
+		nbEnfant = (int)saisieNombre(0,10,sc);
 		// Q6 saisie du type de contrat
-		typeContrat = saisieString("contrat (voiture, moto, habitation)");
+		typeContrat = saisieString("contrat (saisissez voiture, moto, habitation)",sc);
 
-		if(typeContrat == "voiture") {
+		if(typeContrat.equals("voiture")) {
 			ContAssVoit contratVoit = new ContAssVoit(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QV1 saisie du nombre de chevaux fiscaux
 			System.out.println("saisie du nombre de chevaux fiscaux ? oui/non");
-			boolean saisieChevaux = saisieBoolean();
+			boolean saisieChevaux = saisieBoolean(sc);
 			if(saisieChevaux) {
 				System.out.print("Entrez le nombre de chevaux fiscaux de votre voiture (entre 4 et 10) : ");			
 				contratVoit.setSaisieChevaux(true);
-				contratVoit.setNbChevaux((int)saisieNombre(4,10));
+				contratVoit.setNbChevaux((int)saisieNombre(4,10,sc));
 			}
 			// QV2 saisie du bonus malus
 			System.out.println("saisie de votre bonus/malus ? oui/non");
-			boolean saisieBonus = saisieBoolean();
+			boolean saisieBonus = saisieBoolean(sc);
 			if(saisieBonus) {
 				System.out.print("Entrez le montant de votre bonus (entre 0.5 et 1.5) : ");			
 				contratVoit.setSaisieBonus(true);
-				contratVoit.setBonus(saisieNombre(0.5,1.5));
+				contratVoit.setBonus(saisieNombre(0.5,1.5,sc));
 			}	
 			// QV3 saisie nb années assurance
 			System.out.print("Combien d'années cumulez vous d'assurance auto ? : ");			
-			contratVoit.setAnneeAssure((int)saisieNombre(0,60));	
+			contratVoit.setAnneeAssure((int)saisieNombre(0,60,sc));	
 			// QV4 saisie statut conjoint assuré
 			if(statutMarital) {
 				System.out.println("Votre conjoint sera-t-il assuré ?");
-				contratVoit.setConjointAssure(saisieBoolean());
+				contratVoit.setConjointAssure(saisieBoolean(sc));
 			}
 			// QV5 saisie statut enfant assuré
 			if(nbEnfant >0) {
 				System.out.println("Votre enfant sera-t-il assuré ?");
-				contratVoit.setEnfantAssure(saisieBoolean());
+				contratVoit.setEnfantAssure(saisieBoolean(sc));
+				contratVoit.imprimerResultatDevis();
 			}		
-		}else if(typeContrat == "moto") {
+		}else if(typeContrat.equals("moto")) {
 			ContAssMoto contratMoto = new ContAssMoto(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QM1 saisie de la cylindrée
 			System.out.print("Saisissez la cylindrée de votre moto (entre 50 et 1900) : ");			
-			contratMoto.setCylindre((int)saisieNombre(50,1900));
+			contratMoto.setCylindre((int)saisieNombre(50,1900,sc));
 			// QM2 saisie du bonus malus
 			System.out.print("Entrez le montant de votre bonus (entre 0.5 et 1.5) : ");			
-			contratMoto.setBonus(saisieNombre(0.5,1.5));
+			contratMoto.setBonus(saisieNombre(0.5,1.5,sc));
 			// QM3 saisie nb années assurance
 			System.out.print("Combien d'années cumulez vous d'assurance moto ? : ");			
-			contratMoto.setAnneeAssure((int)saisieNombre(0,60));
+			contratMoto.setAnneeAssure((int)saisieNombre(0,60,sc));
+			contratMoto.imprimerResultatDevis();
 			
-		}else if(typeContrat == "habitation") {
+		}else if(typeContrat .equals("habitation")) {
 			ContAssMaison contratMaison = new ContAssMaison(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QH1 saisie du type d'habitation
-			contratMaison.setTypeHabitat(saisieString("type d'habitation (appartement ou maison)"));			
+			contratMaison.setTypeHabitat(saisieString("type d'habitation (appartement ou maison)",sc));			
 			// QH2 garage ?
 			System.out.println("Avez vous un garage  ?");
-			contratMaison.setGarage(saisieBoolean());
+			contratMaison.setGarage(saisieBoolean(sc));
 			// QV3 saisie surface de l'habitation
 			System.out.print("Quelle est la surface de votre habitation ? : ");			
-			contratMaison.setSurface(saisieNombre(10,9999));		
-		}			
+			contratMaison.setSurface(saisieNombre(10,9999,sc));	
+			contratMaison.imprimerResultatDevis();
+		}else {
+			System.out.println("type contrat : "+typeContrat);
+		}
+	// Fin des saisies, destruction de l'objet permettant les saisies
+	sc.close();	
 	}// Fin du simulateur
 	
 	
@@ -91,9 +100,7 @@ public class Simulateur {
 	 * @param objet : type de donnée attendu
 	 * @return saisieString : chaine saisie par l'utilisateur
 	 */
-	public static String saisieString(String objet) {
-		// Instantiation objet pour saisies clavier
-		Scanner sc = new Scanner(System.in);
+	public static String saisieString(String objet, Scanner sc) {
 		// variables :
 		boolean saisieValide; 
 		String saisieString;
@@ -114,16 +121,13 @@ public class Simulateur {
 				System.out.println("Aucune saisies");
 			}
 		}
-		// Fin des saisies, destruction de l'objet permettant les saisies
-		sc.close();	
 		return saisieString;
 	}
 	/*
-	 * fonction qui retourne le statut marital saisi par l'utilisateur
-	 * @return statut : vaut true si utilisateur marié
+	 * fonction retourne un booleen en fonction de la saisie qu'elle demande à l'utilisateur (oui/non)
+	 * @return statut : booleen
 	 */
-	public static boolean saisieBoolean() {
-		Scanner sc = new Scanner(System.in);
+	public static boolean saisieBoolean(Scanner sc) {
 		boolean saisieValide = false; 
 		String saisieString="";	
 		boolean statut = false;
@@ -144,33 +148,28 @@ public class Simulateur {
 				System.out.println("Erreur de saisie, veuillez saisir oui ou non.");
 			}
 		}	
-		sc.close();
 		return statut;
 	}
 	/*
-	 * fonction qui retourne le nombre d'enfants saisis par l'utilisateur
-	 * @param min : valeur minimal exclue
-	 * @param max : valeur maximale eclue
-	 * @return saisieDouble : le nombre d'enfants de l'utilisateur
+	 * fonction qui retourne un nombre saisi par l'utilisateur
+	 * @param min : valeur minimal
+	 * @param max : valeur maximale 
+	 * @return saisieDouble : le nombre attendu
 	 */
-	public static double saisieNombre(double min, double max) {
-		Scanner sc = new Scanner(System.in);
+	public static double saisieNombre(double min, double max, Scanner sc) {
 		boolean saisieValide = false;
 		double saisieDouble = 0;
 		while(!saisieValide){
 			try {
-				System.out.println("veuillez saisir un nombre entre "+min+" et "+max);
-				saisieDouble = sc.nextInt();
+				System.out.print("saisissez un nombre : ");
+				String saisie = sc.nextLine();
+				saisieDouble = Double.parseDouble(saisie);
 				if(saisieDouble>=min && saisieDouble<=max)
 					saisieValide = true;
-			}catch(InputMismatchException i) {
+			}catch(NumberFormatException | NoSuchElementException i) {
 				System.out.println("Erreur de saisie, veuillez saisir un nombre.");
-			}finally {
-				sc.nextLine();
 			}
 		}
-		// Fin des saisies, destruction de l'objet permettant les saisies
-		sc.close();	
 		return saisieDouble;
 	}	
 }

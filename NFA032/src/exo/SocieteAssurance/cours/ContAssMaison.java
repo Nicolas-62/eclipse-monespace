@@ -27,14 +27,14 @@ public class ContAssMaison extends Contrat{
 		int indiceTableau=0;
 		tarif = tarifBase;	
 		for(int i=0; i<bareme.length; i++) {
-			if(surface == bareme[i][0]) {
+			if(surface<=bareme[i][0]) {
 				tarif = tarif*bareme[i][1];
 				indiceTableau = i;
 				break;
 			}
 		}
 		if(garage) {
-			tarif = tarif+bareme[indiceTableau][1];
+			tarif = tarif+bareme[indiceTableau][2];
 		}
 		for(int i=0; i<baremeFoyer.length; i++) {
 			if(nbPersFoyer<=baremeFoyer[i][0]) {

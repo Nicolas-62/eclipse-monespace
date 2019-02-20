@@ -55,7 +55,7 @@ public class ContAssVoit extends Contrat{
 		str ="DEVIS ASSURANCE VOITURE \n\n";		
 		str+= "Nom : "+this.getNom()+"\n";
 		str+= "Prenom : "+this.getPrenom()+"\n";
-		str+= "Le tarif à payer pour votre"+this.getTypeContrat()+" est de : "+this.calculerTarif()+"\n";
+		str+= "Le tarif à payer pour votre "+this.getTypeContrat()+" est de : "+this.calculerTarif()+"\n";
 		str+= "Veuillez joindre : \n";
 		str+="Copie carte grise \n";
 		str+="Copie de permis \n";
