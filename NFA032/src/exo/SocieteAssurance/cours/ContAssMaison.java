@@ -49,7 +49,7 @@ public class ContAssMaison extends Contrat{
 		str ="DEVIS ASSURANCE HABITATION \n\n";
 		str+= "Nom : "+this.getNom()+"\n";
 		str+= "Prenom : "+this.getPrenom()+"\n";
-		str+= "Le tarif à payer pour votre"+this.getTypeContrat()+" est de : "+this.calculerTarif()+"\n";
+		str+= "Le tarif à payer pour votre"+this.getTypeContrat()+" est de : "+this.calculerTarif()+" €\n";
 		str+= "Veuillez joindre : \n";
 		str+="Contrat de location \n";
 		str+="RIB \n";

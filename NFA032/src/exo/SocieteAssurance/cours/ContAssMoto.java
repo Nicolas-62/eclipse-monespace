@@ -36,7 +36,7 @@ public class ContAssMoto extends Contrat{
 		str ="DEVIS ASSURANCE MOTO \n\n";		
 		str+= "Nom : "+this.getNom()+"\n";
 		str+= "Prenom : "+this.getPrenom()+"\n";
-		str+= "Le tarif à payer pour votre"+this.getTypeContrat()+" est de : "+this.calculerTarif()+"\n";
+		str+= "Le tarif à payer pour votre"+this.getTypeContrat()+" est de : "+this.calculerTarif()+" €\n";
 		str+= "Veuillez joindre : \n";
 		str+="Copie carte grise moto \n";
 		str+="Copie de permis moto \n";

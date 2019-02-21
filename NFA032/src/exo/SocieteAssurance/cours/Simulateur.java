@@ -8,10 +8,11 @@ public class Simulateur {
 	public static void main(String[] args) {
 		// Instantiation objet pour saisies clavier
 		Scanner sc = new Scanner(System.in);
-		// Variables ;
-		String nom, prenom, dateNais, typeContrat;
+		// Variables de saisie;
+		String nom, prenom, dateNais;
+		int typeContrat, nbEnfant;
 		boolean statutMarital;
-		int nbEnfant;
+		
 		System.out.println("------------------------------------------------");
 		System.out.println("   Contrat d'assurance : Simulateur de devis    ");
 		System.out.println("------------------------------------------------");
@@ -27,10 +28,15 @@ public class Simulateur {
 		// Q5 saisie du nombre d'enfants
 		System.out.print("Entrez le nombre d'enfants à votre charge : ");
 		nbEnfant = (int)saisieNombre(0,10,sc);
+		System.out.println("nbEnfant : "+nbEnfant);
 		// Q6 saisie du type de contrat
-		typeContrat = saisieString("contrat (saisissez voiture, moto, habitation)",sc);
+		System.out.println("Choisissez le n° du type de contrat que vous voulez simuler");
+		System.out.println("n°1 - voiture");
+		System.out.println("n°2 - moto");
+		System.out.println("n°3 - habitation");
+		typeContrat = (int)saisieNombre(1,3,sc);
 
-		if(typeContrat.equals("voiture")) {
+		if(typeContrat==1) {
 			ContAssVoit contratVoit = new ContAssVoit(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QV1 saisie du nombre de chevaux fiscaux
 			System.out.println("saisie du nombre de chevaux fiscaux ? oui/non");
@@ -62,7 +68,7 @@ public class Simulateur {
 				contratVoit.setEnfantAssure(saisieBoolean(sc));
 				contratVoit.imprimerResultatDevis();
 			}		
-		}else if(typeContrat.equals("moto")) {
+		}else if(typeContrat==2) {
 			ContAssMoto contratMoto = new ContAssMoto(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QM1 saisie de la cylindrée
 			System.out.print("Saisissez la cylindrée de votre moto (entre 50 et 1900) : ");			
@@ -75,7 +81,7 @@ public class Simulateur {
 			contratMoto.setAnneeAssure((int)saisieNombre(0,60,sc));
 			contratMoto.imprimerResultatDevis();
 			
-		}else if(typeContrat .equals("habitation")) {
+		}else if(typeContrat==3) {
 			ContAssMaison contratMaison = new ContAssMaison(nom, prenom, dateNais, statutMarital, nbEnfant);
 			// QH1 saisie du type d'habitation
 			contratMaison.setTypeHabitat(saisieString("type d'habitation (appartement ou maison)",sc));			
@@ -109,16 +115,12 @@ public class Simulateur {
 		saisieValide = false; 
 		saisieString="";
 		while(!saisieValide){
-			try {
-				saisieString = sc.nextLine();			
-				saisieString = saisieString.trim().toLowerCase();
-				if(saisieString.equals("")) {
-					System.out.println("Erreur, veuillez renseigner votre "+objet);									
-				}else {
-					saisieValide = true;	
-				}
-			}catch(NoSuchElementException i) {
-				System.out.println("Aucune saisies");
+			saisieString = sc.nextLine();			
+			saisieString = saisieString.trim().toLowerCase();
+			if(saisieString.equals("")) {
+				System.out.println("Erreur, veuillez renseigner votre "+objet);									
+			}else {
+				saisieValide = true;	
 			}
 		}
 		return saisieString;
@@ -132,20 +134,16 @@ public class Simulateur {
 		String saisieString="";	
 		boolean statut = false;
 		while(!saisieValide){
-			try {
-				saisieString = sc.nextLine();			
-				saisieString = saisieString.trim().toLowerCase();
-				if(saisieString.equals("oui")) {
-					statut = true;
-					saisieValide = true;					
-				}else if(saisieString.equals("non")) {
-					statut = false;
-					saisieValide = true;
-				}else {
-					System.out.println("Erreur, veuillez répondre par oui ou non : ");
-				}
-			}catch(NoSuchElementException i) {
-				System.out.println("Erreur de saisie, veuillez saisir oui ou non.");
+			saisieString = sc.nextLine();			
+			saisieString = saisieString.trim().toLowerCase();
+			if(saisieString.equals("oui")) {
+				statut = true;
+				saisieValide = true;					
+			}else if(saisieString.equals("non")) {
+				statut = false;
+				saisieValide = true;
+			}else {
+				System.out.println("Erreur, veuillez répondre par oui ou non : ");
 			}
 		}	
 		return statut;
@@ -161,12 +159,12 @@ public class Simulateur {
 		double saisieDouble = 0;
 		while(!saisieValide){
 			try {
-				System.out.print("saisissez un nombre : ");
+				System.out.print("saisissez un nombre dans l'interval compris : ");
 				String saisie = sc.nextLine();
 				saisieDouble = Double.parseDouble(saisie);
 				if(saisieDouble>=min && saisieDouble<=max)
 					saisieValide = true;
-			}catch(NumberFormatException | NoSuchElementException i) {
+			}catch(NumberFormatException i) {
 				System.out.println("Erreur de saisie, veuillez saisir un nombre.");
 			}
 		}
