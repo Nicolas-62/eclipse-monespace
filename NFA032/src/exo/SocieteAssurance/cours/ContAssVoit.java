@@ -18,7 +18,9 @@ public class ContAssVoit extends Contrat{
 
 	public ContAssVoit() {}
 	public ContAssVoit(String nom, String prenom,String dateNais, boolean marie, int nbEnfant) {
-		super(nom, prenom, dateNais, marie, nbEnfant);
+
+			super(nom, prenom, dateNais, marie, nbEnfant);
+
 		this.setTypeContrat("assurance voiture");	
 	}
 	public double calculerTarif() {
@@ -77,8 +79,12 @@ public class ContAssVoit extends Contrat{
 	/**
 	 * @param nbChevaux the nbChevaux to set
 	 */
-	public void setNbChevaux(int nbChevaux) {
-		this.nbChevaux = nbChevaux;
+	public void setNbChevaux(int nbChevaux) throws NbChevauxException{
+		if(nbChevaux ==0)
+			throw new NbChevauxException("Nombre de chevaux nul impossible");
+		else {
+			this.nbChevaux = nbChevaux;
+		}
 	}
 	/**
 	 * @return the bonus

@@ -67,8 +67,14 @@ public class TesteRevenu {
 		// Fin des saisies, destruction de l'objet permettant les saisies
 		sc.close();
 		// Création  et affichage d'un foyer fiscal
-		FoyerFiscal nico = new FoyerFiscal(revenu, statut, nbEnfants);
-		System.out.println(nico);
+		try {
+			FoyerFiscal nico = new FoyerFiscal(revenu, statut, nbEnfants);
+			System.out.println(nico);
+			System.out.println("ok");
+		}catch(RevenuException e) {
+			System.out.println(e.getMessage());
+		}
+		
 
 	}
 

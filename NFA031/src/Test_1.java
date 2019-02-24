@@ -10,7 +10,7 @@ public class Test_1 {
 		String C = A + B;
 		System.out.println("C = "+C);
 		System.out.println("entrer un chiffre : ");
-		int chiffre = Clavier.readInt();
+		double chiffre = Clavier.readDouble();
 		System.out.println(chiffre);
 
 	}

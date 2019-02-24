@@ -29,8 +29,12 @@ public class FoyerFiscal {
 		 * @param statut : situation maritale
 		 * @param nbEnfant : nombre d'enfants à charge
 		 */
-		public FoyerFiscal(int revenu, int statut, int nbEnfant) {
-			this.setRevenu(revenu);
+		public FoyerFiscal(int revenu, int statut, int nbEnfant) throws RevenuException{
+			if(revenu ==0) {
+				throw new RevenuException();
+			}else {
+				this.setRevenu(revenu);
+			}
 			this.setStatut(statut);
 			this.setNbEnfant(nbEnfant);
 			this.setQuotientFamilial(this.getNbEnfant(), this.getStatut());

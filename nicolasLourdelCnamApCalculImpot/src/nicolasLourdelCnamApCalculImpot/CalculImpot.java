@@ -132,5 +132,10 @@ public class CalculImpot {
         String resultat = df.format(impot);
         
 		System.out.print("\nL'impôt à payer est de : "+resultat);
+		
+		int ArnaudMasson=0;
+		int prof=0;
+		int[] classe = {0};
+		
 	}
 }

@@ -1,6 +1,6 @@
 package exo.SocieteAssurance.cours;
 
-public abstract class Contrat {
+public abstract class Contrat extends NomException{
 	
 	private String nom;
 	private String prenom;
@@ -10,8 +10,10 @@ public abstract class Contrat {
 	private String typeContrat;
 
 	public Contrat() {}
-	public Contrat(String nom, String prenom,String dateNais, boolean statutMarital, int nbEnfant) {
-		this.nom=nom;
+	public Contrat(String nom, String prenom,String dateNais, boolean statutMarital, int nbEnfant){
+
+			this.nom=nom;
+
 		this.prenom=prenom;
 		this.dateNais=dateNais;
 		this.statutMarital=statutMarital;

@@ -44,7 +44,11 @@ public class Simulateur {
 			if(saisieChevaux) {
 				System.out.print("Entrez le nombre de chevaux fiscaux de votre voiture (entre 4 et 10) : ");			
 				contratVoit.setSaisieChevaux(true);
-				contratVoit.setNbChevaux((int)saisieNombre(4,10,sc));
+				try {
+					contratVoit.setNbChevaux((int)saisieNombre(0,10,sc));
+				}catch(NbChevauxException e){
+					System.out.println(e.getMessage());
+				}
 			}
 			// QV2 saisie du bonus malus
 			System.out.println("saisie de votre bonus/malus ? oui/non");
