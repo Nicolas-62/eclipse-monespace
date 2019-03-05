@@ -163,13 +163,17 @@ public class Simulateur {
 		double saisieDouble = 0;
 		while(!saisieValide){
 			try {
-				System.out.print("saisissez un nombre dans l'interval compris : ");
 				String saisie = sc.nextLine();
 				saisieDouble = Double.parseDouble(saisie);
-				if(saisieDouble>=min && saisieDouble<=max)
+				if(saisieDouble>=min && saisieDouble<=max) {
 					saisieValide = true;
+				}else {
+					System.out.println("veuillez saisir un nombre compris dans l'intervalle :");
+				}
 			}catch(NumberFormatException i) {
-				System.out.println("Erreur de saisie, veuillez saisir un nombre.");
+				System.out.println("Erreur de saisie, veuillez saisir un nombre :");
+			}finally {
+				//...
 			}
 		}
 		return saisieDouble;

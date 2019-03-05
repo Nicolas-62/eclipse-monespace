@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 
 import fr.perso.mesclasses.Clavier;
 
-public class CarnetDeContact {
+public class LourdelCarnetDeContact {
 	/*
 	 * Fonction qui lit/créer le fichier qui contient le carnet de contact
 	 * 
@@ -84,6 +84,7 @@ public class CarnetDeContact {
 		String numTel = "";
 		String email = "";
 		String contient = "aàäbecdeèéfghijklmnopqrstuvwxyz";
+		System.out.println("Dans quel groupe voulez vous mettre ce contact ?");
 		groupe = saisieGroupe();
 		nom = saisieString(nom, "Nom", 2, 25, contient);
 		prenom = saisieString(prenom, "prenom", 2, 25, contient);
@@ -106,7 +107,7 @@ public class CarnetDeContact {
 		String choixGroupe = "";
 		int groupe = 0;
 		do {
-			System.out.println("Sasie du groupe : ");
+			System.out.println("Saisie du groupe : ");
 			for (int i = 0; i < tabGroupes.length; i++) {
 				System.out.println(" " + i + ". " + tabGroupes[i]);
 			}
@@ -262,22 +263,20 @@ public class CarnetDeContact {
 	 * @param String[][] tabContact : le carnets
 	 */
 	public static void modifierContact(String[][] tabContact) {
-
-		if (isCarnetVide(tabContact)) {
-			System.out.println("Aucun contact dans le carnet");
-		} else {
-			afficherCarnetContacts(tabContact);
-			int index = 0;
-			System.out.println("Veuillez saisir l'index du contact à modifier : ");
-			index = Clavier.readInt();
-
-			while (tabContact[index][0] == null) {
-				System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
-				index = Clavier.readInt();
-			}
-			saisieContact(tabContact, index);
-			System.out.println("Contact modifié !");
+		boolean contact = afficherCarnetContacts(tabContact);
+		if(!contact) {
+			return;
 		}
+		int index = 0;
+		System.out.println("Veuillez saisir l'index du contact à modifier : ");
+		index = Clavier.readInt();
+
+		while (tabContact[index][0] == null) {
+			System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
+			index = Clavier.readInt();
+		}
+		saisieContact(tabContact, index);
+		System.out.println("Contact modifié !");
 	}
 	/*
 	 * Fonction qui supprime su contact
@@ -285,23 +284,21 @@ public class CarnetDeContact {
 	 * 
 	 */
 	public static void supprimerContact(String[][] tabContact) {
-
-		if (isCarnetVide(tabContact)) {
-			System.out.println("Aucun contact dans le carnet");
-		} else {
-			int index = 0;
-			afficherCarnetContacts(tabContact);
-			System.out.println("Veuillez saisir l'index du contact à supprimer : ");
-			index = Clavier.readInt();
-			while (tabContact[index][0] == null) {
-				System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
-				index = Clavier.readInt();
-			}
-			for (int i = 0; i < tabContact[index].length; i++) {
-				tabContact[index][i] = null;
-			}
-			System.out.println("Contact supprimé !");
+		int index = 0;
+		boolean contact = afficherCarnetContacts(tabContact);
+		if(!contact) {
+			return;
 		}
+		System.out.println("Veuillez saisir l'index du contact à supprimer : ");
+		index = Clavier.readInt();
+		while (tabContact[index][0] == null) {
+			System.out.println("index invalide, veuillez saisir l'index du contact à modifier : ");
+			index = Clavier.readInt();
+		}
+		for (int i = 0; i < tabContact[index].length; i++) {
+			tabContact[index][i] = null;
+		}
+		System.out.println("Contact supprimé !");
 	}
 	/*
 	 * Fonction qui verifie si le carnet est vide
@@ -334,8 +331,8 @@ public class CarnetDeContact {
 	 * Fonction qui affiche tout ou partie du carnet de contact suivant les choiux de l'utilisateur
 	 * @param String[][] tabContact : carnet de contact
 	 */
-	public static void afficherCarnetContacts(String[][] tabContact) {
-
+	public static boolean afficherCarnetContacts(String[][] tabContact) {
+		boolean contact=false;
 		if (isCarnetVide(tabContact)) {
 			System.out.println("Aucun contact dans le carnet");
 		} else {
@@ -349,7 +346,7 @@ public class CarnetDeContact {
 			}
 			if (choix == 'n') {
 				String choixGroupe = saisieGroupe();
-				afficherContactsMatch(tabContact, choixGroupe);
+				contact = afficherContactsMatch(tabContact, choixGroupe);
 			} else {
 				for (int i = 0; i < tabContact.length; i++) {
 					if (tabContact[i][0] != null) {
@@ -358,8 +355,10 @@ public class CarnetDeContact {
 						System.out.println();
 					}
 				}
+				contact = true;
 			}
 		}
+		return contact;
 	}
 	/*
 	 * Fonction qui affiche les contacts qui possèdent dans leurs coordonnées 
@@ -367,8 +366,9 @@ public class CarnetDeContact {
 	 * 
 	 * @param String[][] tabContact : le carnet de contacts
 	 * @param String match : la chaîne à tester
+	 * @return boolean contact : variable qui est false si il n'y a aucun contact dans le carnet ou dans le groupe selectionné
 	 */
-	public static void afficherContactsMatch(String[][] tabContact, String match) {
+	public static boolean afficherContactsMatch(String[][] tabContact, String match) {
 		boolean contact = false;
 		// Recherche de cette chaine dans les infos des contacts
 		System.out.println("Contacts trouvés : ");
@@ -376,7 +376,9 @@ public class CarnetDeContact {
 			for (int j = 0; j < tabContact[i].length; j++) {
 				if (tabContact[i][j] != null && tabContact[i][j].contains(match)) {
 					// affichage des contacts qui possèdent cette chaine dans leurs infos
+					System.out.print(i + " ");
 					afficherUnContact(tabContact[i]);
+					System.out.println();
 					contact = true;
 				}
 			}
@@ -384,6 +386,7 @@ public class CarnetDeContact {
 		if (!contact) {
 			System.out.println("Aucun");
 		}
+		return contact;
 	}
 	/*
 	 * Fonction recherche les contacts en fonction de la chaine de caractère

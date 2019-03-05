@@ -27,4 +27,6 @@ public class Avion implements Pilotable, GestionnaireRadio{
 	public void inclinerVolets(long angle) { /* code */ }
 	public void setPositionManche(long position) { /* code */ }
 	public void virer(long angle) { /* code */ }
+	public void alert() {
+	}
 }

@@ -28,6 +28,7 @@ public class Pilote extends Collaborateur{
 		if (objetVolant.getAltitude() >= Pilotable.ALTITUDE_SECURITE) {
 			objetVolant.inclinerVolets(0);
 			objetVolant.rentrerTrainAtterrissage();
+			objetVolant.alert();
 		}
 		System.out.println("on décolle !!");
 	}

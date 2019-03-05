@@ -1,5 +1,5 @@
 
-public class TestCarnetDeContact {
+public class LourdelTestCarnetDeContact {
 
 	public static void main(String[] args) {
 		
@@ -8,7 +8,7 @@ public class TestCarnetDeContact {
 		String[][] tabContact = new String[30][5];
 //		System.out.println(tabContact[0][0]);
 //		System.exit(1);
-		tabContact = CarnetDeContact.lireCarnet(tabContact);
+		tabContact = LourdelCarnetDeContact.lireCarnet(tabContact);
 		
 		while(true) {
 			System.out.println("-------------------------------------------");
@@ -22,17 +22,17 @@ public class TestCarnetDeContact {
 			
 			System.out.println(" (-1 ) . Quitter");
 			System.out.println("-------------------------------------------");			
-			choix = CarnetDeContact.saisieChoixMenu();
+			choix = LourdelCarnetDeContact.saisieChoixMenu();
 			
 			switch(choix)
 			{
-			case 1 : CarnetDeContact.ajouterContact(tabContact); break;
-			case 2 : CarnetDeContact.chercherContact(tabContact); break;
-			case 3 : CarnetDeContact.modifierContact(tabContact); break;
-			case 4 : CarnetDeContact.supprimerContact(tabContact); break;
-			case 5 : CarnetDeContact.afficherCarnetContacts(tabContact); break;
-			case -1 : CarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
-			default : CarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
+			case 1 : LourdelCarnetDeContact.ajouterContact(tabContact); break;
+			case 2 : LourdelCarnetDeContact.chercherContact(tabContact); break;
+			case 3 : LourdelCarnetDeContact.modifierContact(tabContact); break;
+			case 4 : LourdelCarnetDeContact.supprimerContact(tabContact); break;
+			case 5 : LourdelCarnetDeContact.afficherCarnetContacts(tabContact); break;
+			case -1 : LourdelCarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
+			default : LourdelCarnetDeContact.ecrireCarnet(tabContact); System.exit(1);
 			}
 		}
 	}

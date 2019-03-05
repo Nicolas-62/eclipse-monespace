@@ -13,4 +13,5 @@ public interface Pilotable {
 	void inclinerVolets(long angle);
 	void setPositionManche(long position);
 	void virer(long angle);
+	void alert();
 }

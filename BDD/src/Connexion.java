@@ -12,8 +12,13 @@ public class Connexion {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet resultSet = null;
-		String url = "jdbc:mysql://localhost/BdMicro";
-		String user = "lourdel";
+		String url = "jdbc:mysql://localhost/BdMicro"+
+		"?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+//		"?useUnicode=true"+
+//		"&useJDBCCompliantTimezoneShift=true"+
+//		"&useLegacyDatetimeCode=false"+
+//		"&serverTimezone=UTC";
+		String user = "root";
 		String password = "Alligator487";
 		try {
 			conn = DriverManager.getConnection(url, user, password);
@@ -33,7 +38,6 @@ public class Connexion {
 					System.out.format("%20s", resultSet.getObject(i).toString());
 				}
 				System.out.println();
-
 			}
 
 			resultSet.close();
