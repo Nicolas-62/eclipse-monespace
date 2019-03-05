@@ -11,7 +11,8 @@ public class Connexion2 {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet resultSet = null;
-		String url = "jdbc:mysql://localhost/BdMicro" + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost/BdMicro" +
+		"?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 //		"?useUnicode=true"+
 //		"&useJDBCCompliantTimezoneShift=true"+
 //		"&useLegacyDatetimeCode=false"+
