@@ -33,3 +33,5 @@ MaConnexion*
 lib/
 #javadoc
 doc/
+#gros fichier texte
+dictionnaire.txt
