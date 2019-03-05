@@ -28,3 +28,6 @@ hs_err_pid*
 #classes pour connexion à la bdd
 MaConnexion*
 !MaConnexion.java
+
+lib
+lib/*
