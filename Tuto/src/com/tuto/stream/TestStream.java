@@ -40,12 +40,18 @@ public class TestStream {
 		for(Personne p : listP2)
 			System.out.println(p);		
 		Out.etoiles();
+		System.out.println("tableau tabP :");
+		for(Personne p : tabP) {
+			System.out.println(p);
+		}
+		Out.etoiles();
 		for(Personne p : listP)
 			System.out.println(p);
 		Out.etoiles();
 		// utilisation des streams
 		// parcours..
-		// La methode forEach est une méthode terminale elle consomme le stream on ne peut plus invoquer de
+		// La methode forEach est une méthode terminale elle consomme le stream on ne peut plus 
+		// invoquer de
 		// méthode après celle ci.
 		Stream<Personne> sp = listP.stream();
 		sp.forEach(System.out::println);

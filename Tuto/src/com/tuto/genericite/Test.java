@@ -40,7 +40,7 @@ public class Test {
 		  // Créer une liste qui accepte n'importe quel type :
 		  ArrayList<?> list;
 		  //List n'acceptant que des instances de Voiture ou de ses sous-classes
-		  List<? extends Voiture> listVoitureSP = new ArrayList<VoitureSansPermis>();
+//		  List<? extends Voiture> listVoitureSP = new ArrayList<VoitureSansPermis>();
 	}
 
 }
