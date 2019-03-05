@@ -21,7 +21,7 @@ public class TestMaConnexion {
 				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
 					System.out.format("%20s", resultSet.getObject(i).toString());
 				}
-				System.out.println();
+				System.out.println("test");
 			}
 			resultSet.close();
 			stmt.close();
