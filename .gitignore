@@ -29,5 +29,7 @@ hs_err_pid*
 MaConnexion*
 !MaConnexion.java
 
-lib
-lib/*
+#librairies externes
+lib/
+#javadoc
+doc/
