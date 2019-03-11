@@ -1,4 +1,4 @@
-package exoContacts;
+package com.lirefichier.fr;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -19,11 +19,15 @@ public class TestContact {
 		ArrayList<Contact> listeContacts = new ArrayList<Contact>();
 		String ligne;
 		try {
-			BufferedReader fichierContacts = new BufferedReader (new InputStreamReader( new FileInputStream("C:\\Users\\adelk\\eclipse-workspace\\DevInfo\\src\\exoContacts\\contacts.txt")));
+			BufferedReader fichierContacts = new BufferedReader (
+												new InputStreamReader( 
+													new FileInputStream("C:\\Users\\nico\\eclipse-workspace\\eclipse-monespace\\AdelExoContacts\\contacts.txt")));
 			
 			ligne = fichierContacts.readLine();
 			
-			PrintWriter contactsTriees = new PrintWriter(new OutputStreamWriter(new FileOutputStream("C:\\Users\\adelk\\eclipse-workspace\\DevInfo\\src\\exoContacts\\contactsTries.txt")));
+			PrintWriter contactsTriees = new PrintWriter(
+											new OutputStreamWriter(
+													new FileOutputStream("C:\\Users\\nico\\eclipse-workspace\\eclipse-monespace\\AdelExoContacts\\contactsTries.txt")));
 			
 			while(ligne != null) {
 				StringTokenizer st = new StringTokenizer(ligne,";");

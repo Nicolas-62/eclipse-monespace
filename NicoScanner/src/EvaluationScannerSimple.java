@@ -16,6 +16,8 @@ public class EvaluationScannerSimple {
 		double resultat=0;
 		try {
 			lecteur = new Scanner(new File("Entree.txt"));
+			System.out.println(lecteur.next());
+			System.exit(1);
 			while(lecteur.findInLine(pattern) != null) {
 				MatchResult match = lecteur.match();
 				nb1 = Double.parseDouble(match.group(1));

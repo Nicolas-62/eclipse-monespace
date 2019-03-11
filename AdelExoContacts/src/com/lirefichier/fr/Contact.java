@@ -1,4 +1,4 @@
-package exoContacts;
+package com.lirefichier.fr;
 
 public class Contact implements Comparable<Contact> {
 
