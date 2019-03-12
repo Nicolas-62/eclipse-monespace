@@ -15,7 +15,7 @@ public class Pilote extends Collaborateur{
 	*/
 	public long calculerSalaire() {
 		long salaire = nbHVol*txHoraire;
-		return 50000;
+		return salaire;
 	}
 	public void gererAccident() {
 		System.out.println("J'enclenche le siège éjectable");
