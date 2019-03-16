@@ -8,8 +8,19 @@ import java.util.regex.Pattern;
 
 public class EvaluationScannerSimple {
 	public static void main(String[] args) {
-
+		
+		String a=" #  \n### \n# # \n";
 		Scanner lecteur = null;
+
+		lecteur = new Scanner(a);
+		lecteur.useDelimiter("\n");
+		String test="";
+		while(lecteur.hasNext()) {
+			test+=lecteur.next();
+		}
+		System.out.println(test);
+		System.exit(1);
+		System.out.println();
 		double nb1 = 0, nb2 = 0;
 		String ope = "";
 		Pattern pattern = Pattern.compile("(\\d+(\\.\\d+)?)\\s?(\\S)\\s?(\\d+(\\.\\d+)?)\\s?");

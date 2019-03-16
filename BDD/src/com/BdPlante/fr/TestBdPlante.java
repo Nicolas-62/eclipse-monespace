@@ -19,7 +19,10 @@ public class TestBdPlante {
 //				"0321556677");
 //		afficherClients(conn);
 		ajouterProduitPrix(conn, "Petunia", "Petunia petunia", "C:\\\\MesImages\\petunia.jpg", 10, 5.90);
+		ajouterProduitPrix(conn, "Iris", "Iristus", "C:\\\\MesImages\\iris.jpg", 9, 8.90);
 		afficherProduitsPrix(conn);
+		creerCommande(conn);
+
 	}
 
 	public static void afficherDonnees(ResultSet resultSet) {
@@ -36,7 +39,7 @@ public class TestBdPlante {
 				for (int i = 1; i <= resultMeta.getColumnCount(); i++) {
 					if (resultSet.getObject(i) != null) {
 						System.out.format("%30s", resultSet.getObject(i).toString());
-					}else {
+					} else {
 						System.out.format("%30s", "NULL");
 					}
 				}
@@ -168,14 +171,13 @@ public class TestBdPlante {
 			prep.setDate(4, Date.valueOf(java.time.LocalDate.now()));
 			prep.setInt(5, qte);
 			prep.executeUpdate();
-			
 
 			String sqlgetIdProduit = "select id_prod from Produits where libelle_court_prod = '" + nomCourt + "'";
 			stmt = conn.createStatement();
 			resultSet = stmt.executeQuery(sqlgetIdProduit);
 			resultSet.next();
 			int idProduit = resultSet.getInt(1);
-
+			stmt.close();
 			String sqlAjouterPrix = "insert into Prix(date_debutVal_prix, date_finVal_prix, isdeleted, id_produit_prix, prix_prix)"
 					+ "values(?,?,?,?,?)";
 
@@ -197,5 +199,65 @@ public class TestBdPlante {
 
 	public static void modifierClient(Connection conn, String unNom, String uneVille, String unTel) {
 
+	}
+
+	public static void creerCommande(Connection conn) {
+		Statement stmt = null;
+
+		PreparedStatement prep = null;
+		try {
+			stmt = conn.createStatement();
+			String req = "insert into Commande(date_comm) values(?)";
+			prep = conn.prepareStatement(req);
+			prep.setDate(1, Date.valueOf(java.time.LocalDate.now()));
+			prep.executeUpdate();
+			prep.close();
+		} catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
+	}
+
+	public static void ajouterProduitLastCommande(Connection conn, int idProduit, int QteProduit) {
+		Statement stmt = null;
+		ResultSet resultSet = null;
+		PreparedStatement prep = null;
+		try {
+			String sqlIdCommande = "select max(id_comm) from Commande";
+			stmt = conn.createStatement();
+			resultSet = stmt.executeQuery(sqlIdCommande);
+			resultSet.next();
+			int idCommande = resultSet.getInt(1);
+			String req = "insert into Detail_commande(id_comm_DC, id_produit_DC, Qte_DC, date_crea_DC, is_deleted_DC) "
+					+ "values(?,?,?,?,?)";
+			prep.setInt(1, idCommande);
+			prep.setInt(2, idProduit);
+			prep.setInt(3, QteProduit);
+			prep.setDate(4, Date.valueOf(java.time.LocalDate.now()));
+			prep.setInt(5, 0);
+			prep.executeUpdate();	
+			
+			prep.close();
+
+		} catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
+	}
+	public static void afficherCommande(Connection conn) {
+		Statement stmt = null;
+		ResultSet resultSet = null;
+		try {
+			String sqlCommande = "select date_comm"
+			conn.createStatement();
+			
+			
+		} catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
 	}
 }
