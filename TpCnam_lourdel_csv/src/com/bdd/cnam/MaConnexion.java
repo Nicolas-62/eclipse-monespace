@@ -2,8 +2,8 @@ package com.bdd.cnam;
 import java.sql.*;
 
 public class MaConnexion {
-	private static String url = "jdbc:mysql://localhost/BdJava" +
-								"?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+	private static String url = "jdbc:mysql://localhost/cnam_db" +
+								"?useSSL=false&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
 	private static String utilisateur = "root";
 	private static String motDePasse = "Alligator487";
 	private static Connection connexion = null;
