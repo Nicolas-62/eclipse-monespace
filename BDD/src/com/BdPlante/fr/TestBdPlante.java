@@ -250,7 +250,7 @@ public class TestBdPlante {
 		Statement stmt = null;
 		ResultSet resultSet = null;
 		try {
-			String sqlCommande = "select date_comm"
+			String sqlCommande = "select date_comm";
 			conn.createStatement();
 			
 			

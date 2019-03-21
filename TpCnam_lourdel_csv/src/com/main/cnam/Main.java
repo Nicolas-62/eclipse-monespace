@@ -88,6 +88,7 @@ public class Main {
 		// affichage du temps de traitement ( temps > 2s sur mon pc, je trouve ça bien long, code à optimiser ?)
 		long t2 = System.currentTimeMillis();
 		System.out.printf("%4dms%n", t2 - t1);
+		//affichage des utilisateurs entrés en bdd
 		CnamDb.afficherUtilisateurs(conn);
 		// fermeture de la connexion à la bdd
 		MaConnexion.stop();	
