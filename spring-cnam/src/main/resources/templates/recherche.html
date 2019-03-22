@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../static/css/styles.css" rel="stylesheet" data-th-href="@{/css/styles.css}">
+
+<meta charset="UTF-8">
+<title>Rechercher utilisateur</title>
+</head>
+<body>
+<div id="bienvenue">
+	<span data-th-text="${msg_accueil}"></span>
+</div>
+
+<div id="formulaire">
+	<form data-th-action="@{/rechercherUser}" data-th-object="${utilisateur}" method="post" role="form">
+	        <fieldset>
+	        		<legend>Ajout d'un utilisateur.</legend>
+	        		<ul dat-th-if="${#fields.hasErrors('*')}">
+						<li data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}">Entrée incorrecte</li>
+					</ul>
+	        		
+	                <div>
+	                        <label for="nom">Nom</label>
+	                        <input type="text" class="form-control" placeholder="Nom" data-th-field="*{nom}" data-th-errorclass="fieldError">
+	                </div>
+	                <div>
+	                        <label for="prenom">Prénom</label>
+	                        <input type="text" class="form-control" placeholder="Prénom" data-th-field="*{prenom}">
+	                </div>
+	                
+	                <div>
+	                        <label for="email">Email</label>
+	                        <input type="email" class="form-control" placeholder="user@domain.fr" data-th-field="*{email}">
+	                </div>
+	                
+	                <button type="submit">
+	                        rechercher
+	                </button>
+	        </fieldset>
+	
+	</form>
+</div>
+
+</body>
+</html>
