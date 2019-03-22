@@ -231,13 +231,13 @@ public class TestBdPlante {
 			int idCommande = resultSet.getInt(1);
 			String req = "insert into Detail_commande(id_comm_DC, id_produit_DC, Qte_DC, date_crea_DC, is_deleted_DC) "
 					+ "values(?,?,?,?,?)";
+			prep = conn.prepareStatement(req);
 			prep.setInt(1, idCommande);
 			prep.setInt(2, idProduit);
 			prep.setInt(3, QteProduit);
 			prep.setDate(4, Date.valueOf(java.time.LocalDate.now()));
 			prep.setInt(5, 0);
-			prep.executeUpdate();	
-			
+			prep.executeUpdate();				
 			prep.close();
 
 		} catch (SQLException ex) {
