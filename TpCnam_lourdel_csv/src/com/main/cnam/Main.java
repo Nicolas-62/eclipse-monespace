@@ -1,7 +1,6 @@
 package com.main.cnam;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import com.traitement.cnam.Traitement;
 public class Main {
 
 	public static void main(String[] args) {
-		long t1 = System.currentTimeMillis();
 		// lecture du fichier récupération de chaque ligne du fichier
 		String source = "Utilisateurs.csv";
 		List<String> listLignes = Flux.lireFichierUtilisateurs(source);
@@ -64,7 +62,7 @@ public class Main {
 				unUtilisateur.setSexe(st.nextToken());
 				listUtilisateurs.add(unUtilisateur);
 				// si les attributs de l'utilisateur sont bien rensignés on l'insère en bdd
-				CnamDb.insererUtilisateur(conn, unUtilisateur);
+				//CnamDb.insererUtilisateur(conn, unUtilisateur);
 				listLog.add("Ligne " + (i + 1) + " insérée \n");
 				nbLignesInsere++;
 
@@ -85,11 +83,8 @@ public class Main {
 		
 		// génération du fichier rapport de log
 		Flux.ecrireLog(listLog);
-		// affichage du temps de traitement ( temps > 2s sur mon pc, je trouve ça bien long, code à optimiser ?)
-		long t2 = System.currentTimeMillis();
-		System.out.printf("%4dms%n", t2 - t1);
 		//affichage des utilisateurs entrés en bdd
-		CnamDb.afficherUtilisateurs(conn);
+		//CnamDb.afficherUtilisateurs(conn);
 		// fermeture de la connexion à la bdd
 		MaConnexion.stop();	
 
