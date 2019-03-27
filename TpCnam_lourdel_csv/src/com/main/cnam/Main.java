@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import com.bdd.cnam.CnamDb;
@@ -12,6 +14,7 @@ import com.bdd.cnam.MaConnexion;
 import com.entite.cnam.Utilisateur;
 import com.exception.cnam.NbAttributsException;
 import com.exception.cnam.UtilisateurException;
+import com.exception.cnam.sameMailException;
 import com.fichier.cnam.Flux;
 import com.traitement.cnam.Traitement;
 
@@ -22,8 +25,8 @@ public class Main {
 		String source = "Utilisateurs.csv";
 		List<String> listLignes = Flux.lireFichierUtilisateurs(source);
 		// déclaration de variables
-		List<Utilisateur> listUtilisateurs = new ArrayList<Utilisateur>();
 		List<String> listLog = new ArrayList<String>();
+		Set<String> setMail = new HashSet<String>();
 		int nbLignesInsere = 0;
 		int nbLignesrejete = 0;
 		String mail = "";
@@ -49,20 +52,24 @@ public class Main {
 			StringTokenizer st = new StringTokenizer(listLignes.get(i), ";");
 			try {
 				if (st.countTokens() != 4) {
-					throw new NbAttributsException();
+					
+					throw new UtilisateurException("manque un élément dans la ligne");
 				}
 				mail = st.nextToken();
-				// on vérifie que le mail est unique
-				Traitement.verifMailUnique(listUtilisateurs, mail);
+				// on vérifie que le mail est unique et n'est pas en  bdd
+				setMail = CnamDb.recupererMailUtilisateurs(conn);
+				if(setMail.contains(mail)) {
+					throw new sameMailException("cause :l'email " + mail + " existe déjà");
+				}
+				
 				// on tente de créer un utilisateur et de renseigner ses attributs
 				Utilisateur unUtilisateur = new Utilisateur();
 				unUtilisateur.setEmail(mail);
 				unUtilisateur.setNom(st.nextToken());
 				unUtilisateur.setPrenom(st.nextToken());
 				unUtilisateur.setSexe(st.nextToken());
-				listUtilisateurs.add(unUtilisateur);
 				// si les attributs de l'utilisateur sont bien rensignés on l'insère en bdd
-				//CnamDb.insererUtilisateur(conn, unUtilisateur);
+				CnamDb.insererUtilisateur(conn, unUtilisateur);
 				listLog.add("Ligne " + (i + 1) + " insérée \n");
 				nbLignesInsere++;
 
@@ -84,7 +91,7 @@ public class Main {
 		// génération du fichier rapport de log
 		Flux.ecrireLog(listLog);
 		//affichage des utilisateurs entrés en bdd
-		//CnamDb.afficherUtilisateurs(conn);
+		CnamDb.afficherUtilisateurs(conn);
 		// fermeture de la connexion à la bdd
 		MaConnexion.stop();	
 

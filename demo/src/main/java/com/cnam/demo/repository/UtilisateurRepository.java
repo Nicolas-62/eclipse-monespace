@@ -6,7 +6,7 @@ import com.cnam.demo.model.Utilisateur;
 
 
 /**
- * Interface pour les action CRUD (Create update,delete) entite utilisateru
+ * Interface pour les action CRUD (Create update,delete) entite utilisateur
  * @author dells
  *
  */

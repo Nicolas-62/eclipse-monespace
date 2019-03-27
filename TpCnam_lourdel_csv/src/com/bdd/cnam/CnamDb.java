@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.entite.cnam.Utilisateur;
 
@@ -44,6 +46,24 @@ public class CnamDb {
 			System.out.println("SQLState: " + e.getSQLState());
 			System.out.println("VendorError: " + e.getErrorCode());
 		}
+	}
+	public static Set<String> recupererMailUtilisateurs(Connection conn){
+		Statement stmt = null;
+		ResultSet resultSet = null;
+		Set<String> setMail = new HashSet<String>();
+		try {
+			stmt = conn.createStatement();
+			resultSet = stmt.executeQuery("select Email from Utilisateur");
+			while (resultSet.next()) {
+				setMail.add(resultSet.getString(1));
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("SQLException: " + e.getMessage());
+			System.out.println("SQLState: " + e.getSQLState());
+			System.out.println("VendorError: " + e.getErrorCode());
+		}
+		return setMail;		
 	}
 	public static void afficherDonnees(ResultSet resultSet) {
 		try {

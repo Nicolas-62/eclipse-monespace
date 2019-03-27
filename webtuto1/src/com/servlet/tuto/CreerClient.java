@@ -34,7 +34,7 @@ public class CreerClient extends HttpServlet {
 		}
 		
 		request.setAttribute("message", message);		
-		this.getServletContext().getRequestDispatcher( "/affichageClient.jsp" ).forward( request, response );
+		this.getServletContext().getRequestDispatcher( "/creerClient.jsp" ).forward( request, response );
 		
 	}
 }
