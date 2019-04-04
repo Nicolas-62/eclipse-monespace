@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cnam.demo.model.Produit;
 import com.cnam.demo.model.Utilisateur;
-import com.cnam.demo.repository.ProduitRepositery;
+import com.cnam.demo.repository.ProduitRepository;
 import com.cnam.demo.repository.UtilisateurRepository;
 
 
@@ -30,7 +30,8 @@ public class IndexController {
 	
 	@Autowired // sert à creer une instance voir pattern singleton
 	UtilisateurRepository utilisateurRepository;
-	ProduitRepositery produitRepositery;
+	@Autowired
+	ProduitRepository produitRepository;
 	
 	/**
 	 * Cette m�thode permet de capter un GEt de le page 
@@ -59,13 +60,13 @@ public class IndexController {
 		unUtilisateur.setNom("bouhadoun");
 		unUtilisateur.setPrenom("kamel");
 		unUtilisateur.setEmail("kamel.bouhadoun+2@gmail.com");
-//		utilisateurRepository.save(unUtilisateur);
+		utilisateurRepository.save(unUtilisateur);
 		
 		Produit unProduit = new Produit();
 		unProduit.setNom("couches_culotte");
 		unProduit.setQtite(12);
 		unProduit.setPrix(20d);
-//		produitRepositery.save(unProduit);
+		produitRepository.save(unProduit);
 		
 		model.addAttribute("msg_accueil", String.format("Nom client : "+unUtilisateur.getNom()+
 					" Nom produit : "+ unProduit.getNom()));
