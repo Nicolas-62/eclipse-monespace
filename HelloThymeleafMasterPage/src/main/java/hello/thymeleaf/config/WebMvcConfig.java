@@ -12,15 +12,9 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 
-@Configuration //  indique que la classe sert à configurer Spring.
-/*
- *  Dans le code d'une classe ayant
-	l'annotation [Configuration] on trouve normalement des beans Spring, 
-	ç-à-d des définitions de classe à instancier.
- */
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-	
-	
+
 	@Bean(name = "localeResolver")
 	public LocaleResolver getLocaleResolver() {
 		CookieLocaleResolver resolver = new CookieLocaleResolver();
@@ -49,22 +43,22 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
 	}
 
-	@Bean
+//	@Bean
 
-	public SpringResourceTemplateResolver templateResolver() {
-		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-		templateResolver.setPrefix("classpath:/templates/");
-		templateResolver.setSuffix(".xml");
-		templateResolver.setTemplateMode("HTML5");
-		templateResolver.setCharacterEncoding("UTF-8");
-		templateResolver.setCacheable(true);
-		return templateResolver;
-	}
+//	public SpringResourceTemplateResolver templateResolver() {
+//		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+//		templateResolver.setPrefix("classpath:/templates/");
+//		templateResolver.setSuffix(".xml");
+//		templateResolver.setTemplateMode("HTML5");
+//		templateResolver.setCharacterEncoding("UTF-8");
+//		templateResolver.setCacheable(true);
+//		return templateResolver;
+//	}
 
-	@Bean
-	SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver);
-		return templateEngine;
-	}
+//	@Bean
+//	SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
+//		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+//		templateEngine.setTemplateResolver(templateResolver);
+//		return templateEngine;
+//	}
 }
