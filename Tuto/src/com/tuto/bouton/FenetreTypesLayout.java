@@ -80,16 +80,16 @@ public class FenetreTypesLayout extends JFrame{
 		 * c'est une conteneur paramétré avec un BoxLayout()
 		 */
 	    //On crée un conteneur avec gestion horizontale
-	    Box b1 = Box.createHorizontalBox();
-	    b1.add(new JButton("Bouton 1"));
+	    Box b4 = Box.createHorizontalBox();
+	    b4.add(new JButton("Bouton 1"));
 	    //Idem
-	    Box b2 = Box.createHorizontalBox();
-	    b2.add(new JButton("Bouton 1 deuxième ligne"));
-	    b2.add(new JButton("Bouton 2 deuxième ligne"));
+	    Box b5 = Box.createHorizontalBox();
+	    b5.add(new JButton("Bouton 1 deuxième ligne"));
+	    b5.add(new JButton("Bouton 2 deuxième ligne"));
     
-	    Box b4 = Box.createVerticalBox();
-	    b4.add(b1);
-	    b4.add(b2);
+	    Box b6 = Box.createVerticalBox();
+	    b6.add(b4);
+	    b6.add(b5);
 	    this.getContentPane().add(b4);		    
 	}
 	
