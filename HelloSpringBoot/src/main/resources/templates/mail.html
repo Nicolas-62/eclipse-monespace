@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<!-- cette ligne précise l'espace de nom des tag "th" pour, ce n'est pas vraiment du HTML5 valide
+	 si on veut un page HTML5 valide on peut supprimer le lien dans la balise suivante et ajouter
+	 data-th aux "th" Custom data- prefixed attributes are allowed by the HTML5 specification -->
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Welcome</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+      
+   </head>
+   <body>
+      <h1>Envoyer un mail :</h1>
+
+          
+      <a th:href="@{/mail(send=mail)}">Envoyer un mail</a>  
+      <br />     
+   </body>
+    
+</html>

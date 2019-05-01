@@ -13,7 +13,7 @@
 	<artifactId>HelloSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<!-- creation d'une archive jar/war : -->
-<!-- 	<packaging>war</packaging> -->
+	<!-- <packaging>war</packaging> -->
 
 	<name>HelloSpringBoot</name>
 	<description>Tuto o7planning.org</description>
@@ -23,6 +23,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

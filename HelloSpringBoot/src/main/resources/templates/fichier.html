@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Welcome</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Télécharger un pdf</h1>
+
+       <p>Télécharger l'aide memoire des commandes git</p>   
+       <a th:href="@{/vue/pdf/git_memo_fr.pdf}" target="_blank">Visionner</a> 
+      <a th:href="@{/download/git_memo_fr.pdf}" target="_blank">Télécharger</a>  
+      <br />     
+   </body>
+    
+</html>

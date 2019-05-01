@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<!-- cette ligne précise l'espace de nom des tag "th" pour, ce n'est pas vraiment du HTML5 valide
+	 si on veut un page HTML5 valide on peut supprimer le lien dans la balise suivante et ajouter
+	 data-th aux "th" Custom data- prefixed attributes are allowed by the HTML5 specification -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Inscription</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/libs/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<header>Ceci est l'entête</header>
+	<th:block layout:fragment="contenu"></th:block>
+
+</body>
+</html>
