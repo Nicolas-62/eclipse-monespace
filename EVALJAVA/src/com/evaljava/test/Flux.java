@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.entite.cnam.Utilisateur;
-
 public class Flux {
 
 	public static void lireFichier(String source) {
