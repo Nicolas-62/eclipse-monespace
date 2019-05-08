@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'un produit</title>
+</head>
+<body>
+	<div>
+		<form th:action="@{/addProduit}" th:object="${produit}" method="POST">
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+					<label for="nom">Nom</label> <input type="text" th:field="*{nom}"
+						class="form-control" required>
+					<div class="valid-feedback">Ok</div>
+					<div class="invalid-feedback">Choisissez un autre nom</div>
+					<span class="formError" th:if="${#fields.hasErrors('nom')}"
+						th:errors="*{nom}">nom invalide</span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="prixForm">Prix</label> <input type="text"
+						th:field="*{prix}" class="form-control is-valid" id="prixForm"
+						required>
+					<div class="valid-feedback">Ok</div>
+					<div class="invalid-feedback">Veuillez entrer un nombre</div>
+					<span class="formError" th:if="${#fields.hasErrors('prix')}"
+						th:errors="*{prix}">prix invalide</span>
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="qtite">Quantite</label> <input type="text"
+						th:field="*{qtite}" class="form-control" required>
+					<div class="valid-feedback">Ok</div>
+					<div class="invalid-feedback">Choisissez un nombre</div>
+					<span class="formError" th:if="${#fields.hasErrors('qtite')}"
+						th:errors="*{qtite}">quantite invalide</span>
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit">Valider</button>
+		</form>
+	</div>
+
+</body>
+</html>

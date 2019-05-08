@@ -17,10 +17,12 @@ public class Produit {
 	@NotNull
 	@Size(min=2, max=30, message="Taille minimum de {min} et {max} au maximum.")
 	private String nom;
-	@Positive
+	
+	@Positive(message="Veuillez entrer un nombre positif.")
 	private int qtite;
+	
 	@NotNull
-	@Positive
+	@Positive(message="Veuillez entrer un nombre positif.")
 	private double prix;
 	
 	public int getQtite() {
