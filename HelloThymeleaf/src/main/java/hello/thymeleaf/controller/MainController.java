@@ -201,7 +201,7 @@ public class MainController {
 		} else {
 			// redirection vers [vue-19]
 			redirectAttributes.addFlashAttribute("form19", formulaire);
-			return "redirect:/v19";
+			return "redirect:/vue-v19";
 		}
 	}
 }
