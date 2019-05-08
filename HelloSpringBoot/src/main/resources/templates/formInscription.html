@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layout :: page">
+<div class="container" th:fragment="content">
+	<h3>formulaire d'inscription</h3>
+
+	<form id="formInscription" th:action="@{/inscription}"
+		th:object="${inscription}" method="POST">
+		<div class="form-row">
+			<div class="col-md-4 mb-3">
+				<label for="civiliteInscription">Civilité</label> <select
+					th:field="*{civiliteInscription}" class="custom-select">
+					<option selected value="M.">M.</option>
+					<option value="Mme">Mme</option>
+				</select>
+			</div>
+			<div class="col-md-4 mb-3">
+				<label for="nomInscription">Nom</label> <input type="text"
+					class="form-control" th:field="*{nomInscription}"
+					placeholder="Nom..">
+				<div class="valid-feedback">Ok !</div>
+				<div class="invalid-feedback">Saisie invalide.</div>
+				<span class="formError"
+					th:if="${#fields.hasErrors('nomInscription')}"
+					th:errors="*{nomInscription}">Saisie invalide.</span>
+			</div>
+			<div class="col-md-4 mb-3">
+				<label for="prenomInscription">Prenom</label> <input type="text"
+					class="form-control" th:field="*{prenomInscription}"
+					placeholder="Prenom..">
+				<div class="valid-feedback">Ok !</div>
+				<div class="invalid-feedback">Saisie invalide.</div>
+				<span class="formError"
+					th:if="${#fields.hasErrors('prenomInscription')}"
+					th:errors="*{prenomInscription}">Saisie invalide.</span>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="col-md-6 mb-3">
+				<label for="adresseInscription">Aresse</label> <input type="text"
+					class="form-control" th:field="*{adresseInscription}">
+				<div class="valid-feedback">Ok !</div>
+				<div class="invalid-feedback">Saisie invalide.</div>
+				<span class="formError"
+					th:if="${#fields.hasErrors('adresseInscription')}"
+					th:errors="*{adresseInscription}">Saisie invalide.</span>
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="villeInscription">Ville</label> <input type="text"
+					class="form-control" th:field="*{villeInscription}">
+				<div class="valid-feedback">Ok !</div>
+				<div class="invalid-feedback">Saisie invalide.</div>
+				<span class="formError"
+					th:if="${#fields.hasErrors('villeInscription')}"
+					th:errors="*{villeInscription}">Saisie invalide.</span>
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="CpInscription">Code Postal</label> <input type="text"
+					class="form-control" th:field="*{CpInscription}">
+				<div class="valid-feedback">Ok !</div>
+				<div class="invalid-feedback">Saisie invalide.</div>
+				<span class="formError"
+					th:if="${#fields.hasErrors('CpInscription')}"
+					th:errors="*{CpInscription}">Saisie invalide.</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="emailInscription">Adresse mail</label> <input
+				type="email" class="form-control" th:field="*{emailInscription}"
+				placeholder="nom@exemple.com">
+			<div class="valid-feedback">Ok !</div>
+			<div class="invalid-feedback">Veuillez saisir une adresse mail
+				valide.</div>
+			<span class="formError"
+				th:if="${#fields.hasErrors('emailInscription')}"
+				th:errors="*{emailInscription}">mail invalide</span>
+		</div>
+		<div class="form-group">
+			<label for="telInscription">Téléphone</label> <input type="text"
+				class="form-control" th:field="*{telInscription}">
+			<div class="valid-feedback">Ok !</div>
+			<div class="invalid-feedback">Veuillez saisir un numéro valide.</div>
+			<span class="formError"
+				th:if="${#fields.hasErrors('telInscription')}"
+				th:errors="*{telInscription}">Numéro invalide.</span>
+		</div>
+		<div class="form-group">
+			<label for="diplomeObtenuInscription">Diplome obtenu le plus
+				élevé</label> <input type="text" class="form-control"
+				th:field="*{diplomeObtenuInscription}">
+			<div class="valid-feedback">Ok !</div>
+			<div class="invalid-feedback">Saisie invalide.</div>
+			<span class="formError"
+				th:if="${#fields.hasErrors('diplomeObtenuInscription')}"
+				th:errors="*{diplomeObtenuInscription}">Saisie invalide.</span>
+		</div>
+		<div class="form-group">
+			<label for="formationSouhaiteInscription">Formation souhaité</label>
+			<select th:field="*{formationSouhaiteInscription}"
+				class="custom-select">
+				<option th:each="formation : ${formations}" th:text="${formation}" th:value="${formation}">valeur</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary mr-2" type="submit">Envoyer</button>
+			<button type="button" class="btn btn-danger">Annuler</button>
+		</div>
+	</form>
+</div>
+</html>

@@ -1,20 +1,60 @@
-<!DOCTYPE HTML>
-<!-- cette ligne précise l'espace de nom des tag "th" pour, ce n'est pas vraiment du HTML5 valide
-	 si on veut un page HTML5 valide on peut supprimer le lien dans la balise suivante et ajouter
-	 data-th aux "th" Custom data- prefixed attributes are allowed by the HTML5 specification -->
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="https://www.thymeleaf.org"
-	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Inscription</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{/libs/bootstrap/css/bootstrap.min.css}" />
-</head>
-<body>
-	<header>Ceci est l'entête</header>
-	<th:block layout:fragment="contenu"></th:block>
+<!DOCTYPE html>
 
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<!-- Brand -->
+			<a class="navbar-brand" th:href="@{/home}"> <img
+				th:src="@{img/logo.jpeg}" width="75" height="54" alt="logo">
+			</a>
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					href="#modalContact">Contact</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/formations}">Formations</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/mail}">mail</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/inscription}">inscription</a></li>
+				<!-- Dropdown -->
+				<!-- 				<li class="nav-item dropdown"><a -->
+				<!-- 					class="nav-link dropdown-toggle" href="#" id="navbardrop" -->
+				<!-- 					data-toggle="dropdown"> Dropdown link </a> -->
+				<!-- 					<div class="dropdown-menu"> -->
+				<!-- 						<a class="dropdown-item" href="#">Link 1</a> <a -->
+				<!-- 							class="dropdown-item" href="#">Link 2</a> <a -->
+				<!-- 							class="dropdown-item" href="#">Link 3</a> -->
+				<!-- 					</div></li> -->
+			</ul>
+		</nav>
+		<!-- The Modal -->
+		<div class="modal fade" id="modalContact">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Ecrivez nous</h4>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div th:replace="formContact :: formContact"></div>
+					</div>
+
+					<!-- Modal footer -->
+					<!-- 					<div class="modal-footer"> -->
+					<!-- 						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+					<!-- 					</div> -->
+
+				</div>
+			</div>
+		</div>
+	</header>
 </body>
+
 </html>
+

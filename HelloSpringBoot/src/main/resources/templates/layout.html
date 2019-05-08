@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<!-- cette ligne précise l'espace de nom des tag "th" pour, ce n'est pas vraiment du HTML5 valide
+	 si on veut un page HTML5 valide on peut supprimer le lien dans la balise suivante et ajouter
+	 data-th aux "th" Custom data- prefixed attributes are allowed by the HTML5 specification -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org" th:fragment="page">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${title}">titre</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/libs/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:replace="header :: header"></div>
+	<div th:replace="this :: content"></div>
+	<div th:replace="footer :: footer"></div>
+	<script src="/libs/jquery/jquery-3.4.0.min.js"></script>
+	<script src="/libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/main.js"></script>
+</body>
+</html>

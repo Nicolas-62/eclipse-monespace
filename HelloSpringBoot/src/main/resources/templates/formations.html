@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layout :: page">
+<div class="container" th:fragment="content">
+	<h1>Nos Formations</h1>
+	<ul>
+		<li>Formation ingenieur en technologies quantiques
+			supraconductrices</li>
+		<ul>
+			<li>Dossier d'inscription :</li>
+			<li><a th:href="@{/vue/pdf/dossier_inscription_ap.pdf}" target="_blank">voir</a>
+				<a th:href="@{/download/dossier_inscription_ap.pdf}" target="_blank">Télécharger</a>
+			</li>
+		</ul>
+
+	</ul>
+</div>
+</html>
