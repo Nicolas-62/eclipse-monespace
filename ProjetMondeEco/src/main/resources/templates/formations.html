@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layout :: page">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="container mb-5" th:fragment="content">
+	<h1>Nos Formations</h1>
+	<p> Les formations du LRKT
+	Nos formations sont regroupées en 150 écoles où enseignent 
+	des universitaires et des experts professionnels.
+	Elles sont dispensées en formation continue, en cours du soir, 
+	en e-learning ou en alternance.
+	</p>
+	<ul> 
+		<h1>Finance</h1> 
+		<li><h2> Présentation de la mention Finance</h2>
+		<p>Le développement de la mention Finance s'effectue autour de 3 axes :<br>
+		
+		Logique de solidarité et d'excellence <br>
+		Ouverture de la formation en apprentissage ou contrat de professionnalisation et 
+		échanges locaux ou internationaux avec d'autres écoles ou institutions universitaires.<br>
+		Qualité<br>
+		Respect des processus et des objectifs d'insertionprofessionnelle, d'évaluation des 
+		enseignements, de recrutement d'étudiants et de production scientifique.<br>
+		Recherche<br>
+		Amener les étudiants vers des réflexions plus théoriques. Ils ont la possibilité d'opter 
+		pour une carrière professionnelle dans les milieux bancaire ou financier ou de s'engager 
+		dans la poursuite d'études en Doctorat. Le Master Finance propose 8 parcours dont 4 en alternance.<br> 
+		Le parcours MSG Finance et développement des entreprises est proposé par l'IAE - École 
+		universitaire de Management, les autres sont proposés par la Faculté de Finance, Banque, 
+		Comptabilité - FFBC, toutes deux rattachées à l'université de Lille.
+		Le master Finance parcours Finance et trésorerie d'entreprise.
+		</p>
+		</li>
+		
+		<li><h2>Compétences visées</h2> 
+		<p> Compétences communes à tous les parcours de la mention Finance proposés par la LRKT.
+		</p>
+		<ul>
+			<li>Savoir analyser les états financiers d'une entreprise. </li>
+			<li>Maîtriser les types de financement à moyen et long terme </li>
+			<li>Pouvoir estimer les avantages et coûts d'une opération financière </li>
+			<li>Connaître la fiscalité des produits financiers et immobiliers </li>
+			<li>Connaître le fonctionnement des marchés capitaux et les méthodes de gestion de portefeuille. </li>
+			<li>Être capable de définir une stratégie de placement </li>
+			<li>Compétences spécifiques du parcours Finance et trésorerie d'entreprise </li>
+			<li>Maîtriser les techniques de gestion de trésorerie en monnaie domestique, en devise et 
+			en dates de valeur </li>
+			<li>Construire et exploiter les prévisions de flux de fond/trésorerie </li>
+			<li>Optimiser une stratégie de financement et de placement sur les marchés financiers </li>
+			<br> </li>
+		</ul>
+	
+		<h1>Informatique</h1> 
+		<p>Présente dans tous les secteur: l'informatique génère de nombreux métiers, du 
+		technicien à l'ingénieur, qu'il s'agisse de concevoir des applications, de développer 
+		des programmes, d'assurer la maintenance d'un parc informatique ou de vendre des 
+		produits informatiques.</p>
+			<ul> 
+				<li> <h2> Les formations courtes : deux BTS et cinq DUT au choix</h2>
+		Les BTS systèmes numériques option informatique et réseaux, et SIO (services informatiques 
+		aux organisations), ainsi que les DUT GEII (génie électrique et informatique industrielle),
+		STID (statistique et informatique décisionnelle), informatique, MMI (métiers du multimédia 
+		et de l'Internet) et réseaux et télécommunications mènent à un diplôme de niveau bac+2. 
+		Ces formations sont sélectives. La procédure d'admission repose sur un dossier de candidature 
+		et parfois sur un entretien.<br>
+
+		Au programme des deux années : des disciplines scientifiques comme les mathématiques, des matières 
+		plus techniques telles que l'architecture des systèmes informatiques, les réseaux, les bases de 
+		données, etc., mais aussi de l'économie et de la communication.<br>
+
+		Ces diplômes attirent des bacheliers S et STI2D, et une bonne part de bacheliers ES en DUT STID et MMI. 
+		Les BTS recrutent aussi pour un quart dans les filières professionnelles.<br>
+
+		Les titulaires d'un BTS ou d'un DUT qui visent la poursuite d'études peuvent postuler en licence 
+		professionnelle.</p> </li>
+
+		<li><h2>Les licences : générales ou professionnelles</h2> 
+		<p>Pour se spécialiser et trouver rapidement un emploi, la licence professionnelle, en un an après un 
+		BTS ou un DUT, est idéale.D'autant qu'une très large majorité des 250 parcours de licence pro en 
+		informatique de gestion, réseaux, statistiques ou télécommunications existant à l'université est 
+		proposée en alternance. </p>
+
+		<p>La licence générale, en trois ans après le bac, est plus adaptée pour intégrer un master.</p>
+
+		<p>Une licence d'informatique mène ainsi à un master en informatique et, pour les meilleurs étudiants, 
+		à une école d'ingénieurs ou à un master MIAGE (méthodes informatiques appliquées à la gestion des 
+		entreprises). Prisé des recruteurs, ce diplôme propose une double compétence en informatique et en 
+		gestion des ­entreprises.</p></li>
+		</ul>
+ 	</ul>	
+
+	<h1>Trouvez l'organisation de votre formation</h1>
+	<ul>
+		<li>
+			Master Finance
+		</li>
+		<ul>
+			<li>Dossier d'inscription :</li>
+			<li><a th:href="@{/vue/pdf/Finance.pdf}" target="_blank">voir</a>
+				<a th:href="@{/telecharger/pdf/Finance.pdf}" target="_blank">Télécharger</a>
+			</li>
+		</ul>
+		<li>
+			DUT Analyste Programmeur
+		</li>
+		<ul>
+			<li>Dossier d'inscription :</li>
+			<li><a th:href="@{/vue/pdf/informatique.pdf}" target="_blank">voir</a>
+				<a th:href="@{/telecharger/pdf/informatique.pdf}" target="_blank">Télécharger</a>
+			</li>
+		</ul>
+<!-- 		<li> -->
+<!-- 			DUT Genie Biologique -->
+<!-- 		</li> -->
+<!-- 		<ul> -->
+<!-- 			<li>Dossier d'inscription :</li> -->
+<!-- 			<li><a th:href="@{/vue/pdf/biologie.pdf}" target="_blank">voir</a> -->
+<!-- 				<a th:href="@{/telecharger/pdf/biologie.pdf}" target="_blank">Télécharger</a> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+	</ul>
+
+</div>
+</html>

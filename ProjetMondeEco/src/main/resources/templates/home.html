@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layout :: page">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="container" th:fragment="content">
+	<img th:src="@{img/Lecole.jpeg}" alt="Lecole"  >
+	
+</div>
+
+<section class="container mb-5" th:fragment="content">
+	<br>
+	<div class="texte-illustration">
+		<img class="illus-gauche"  th:src="@{img/Directeur.jpeg}" alt="directeur" width="300" height="300" >
+    	<h2>Directeur: Mr Mourou Prix nobel de physique</h2>
+		<br>
+		<p>
+			Gérard Mourou, né le 22 juin 1944 à Albertville , est un physicien français qui 
+			s'est investi dans le domaine des champs électriques et du laser. Il est le 
+			co-inventeur d'une technique d'amplification par dérive de fréquence qui fut 
+			utilisée pour créer des impulsions ultracourtes de très haute puissance 
+			(de l'ordre du térawatt) dans les lasers à impulsions. Il reçoit pour cette invention, 
+			conjointement avec Donna Strickland, le prix Nobel de physique en 2018. 
+		</p>
+		
+		<p>
+			En 2013, Gérard Mourou lance le projet ICAN, qui vise à repousser les limites des lasers 
+			ultracourts actuels en réalisant la combinaison cohérente d'un grand nombre de fibres 
+			optiques13. La construction d'une démonstration de principe, XCAN, est actuellement 
+			réalisée à l'École polytechnique en partenariat avec l'entreprise Thales.
+			apres cela, il integras, l'ecole LRKT en 2018
+		</p>
+		<br>
+		<h2>Presentation de l'école</h2>
+		<br>
+		<p>
+		A la fois grande école et université, l’École normale supérieure dispense à Roubaix, 
+		au cœur du Quartier latin, une formation d’excellence par la recherche conduisant 
+		aux différents métiers de l’enseignement et de la recherche, et concourt à la 
+		formation par la recherche des cadres supérieurs des administrations publiques 
+		et des entreprises françaises et européennes. Elle définit aussi et met en œuvre 
+		une politique de recherche scientifique et technologique dans une perspective 
+		multidisciplinaire et internationale.
+		</p>
+		<p>
+		Liberté intellectuelle, pluridisciplinarité en lettres et en sciences, suivi personnalisé,
+		vie de campus foisonnante mêlant étudiants et professeurs de toute discipline sont au cœur 
+		des spécificités de l’École normale supérieure qui, depuis plus de deux siècles, prépare 
+		aux débouchés les plus variés et aux responsabilités les plus élevées, tout en étant 
+		pleinement investie dans les débats intellectuels, scientifiques et culturels de son temps,
+		notamment à travers la multiplicité des engagements des normaliens.
+		</p>
+		
+		
+		<p th:text="${someText}"></p>
+	</div>	
+</section>
+</html>

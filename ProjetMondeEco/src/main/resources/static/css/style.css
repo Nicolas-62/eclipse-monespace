@@ -1,0 +1,29 @@
+h1 {
+    color:#0000FF;
+}
+ 
+h2 {
+    color:#FF0000;
+}
+ 
+table {
+    border-collapse: collapse;
+}
+ 
+table th, table td {
+    padding: 5px;
+}
+.formError{
+	color:red;
+}
+
+.texte-illustration .illus-gauche {
+    float: left;
+    margin: 5px 20px 5px 0;
+}
+
+footer{
+	background-color : #E2E7F1;
+	text-align:right;
+	color: #A4A6A6;
+}
