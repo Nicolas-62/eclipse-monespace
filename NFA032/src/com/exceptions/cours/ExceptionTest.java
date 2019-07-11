@@ -8,12 +8,13 @@ public class ExceptionTest {
 		}
 		return a / b;
 	}
-	double appelerDiviser(int a, int b) {
-		try {
+	// l'exception est propagée
+	double appelerDiviser(int a, int b) throws Exception{
+//		try {
 			return diviser(a,b);
-		}catch(Exception e) {
-			return 0;
-		}
+//		}catch(Exception e) {
+//			return 0;
+//		}
 	}
 }
 
