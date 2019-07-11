@@ -1,7 +1,8 @@
-package test2.module;
-import test.module.*;
+package tester.module;
 
-public class Tester2 {
+import test.module.Tester;
+
+public class ModuleTester {
 	public static void main(String[] args) {
 		Tester test = new Tester();
 		test.direBonjour("nico");
