@@ -16,7 +16,7 @@ import java.util.Scanner;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
-public class EvaluationScanner {
+public class OperationsMathFichierScanner {
 	public static void main(String[] args) {
 		List<String> lignes = new ArrayList<>();
 		List<Double> resultats = new ArrayList<>();

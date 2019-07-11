@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.Reader;
 import java.io.Writer;
 
-public class Transfer {
+public class TestTransfer {
 
 	public static void main(String[] args) {
         try (Reader lecture = new FileReader("Entree.txt")){

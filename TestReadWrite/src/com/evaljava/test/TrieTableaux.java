@@ -1,8 +1,13 @@
 package com.evaljava.test;
 
 
-public class Evalpapier {
-
+public class TrieTableaux {
+	/*
+	 * Fonction qui copie dans un autre tableau
+	 * les entiers positifs d'un tableau dans l'ordre croissant
+	 * @Param tab : tableau d'entiers positifs
+	 * @Param tabTri : tableau vide de taille égale à tab
+	 */
 	public static void tri(int[] tab, int[] tabTri) {
 		int valMax=0;
 		int indice=0;
@@ -18,6 +23,12 @@ public class Evalpapier {
 			tabTri[j]=valMax;		
 		}		
 	}
+	/*
+	 * Fonction qui copie dans un autre tableau
+	 * les decimaux positifs d'un tableau dans l'ordre croissant
+	 * @Param tab : tableau de decimaux positifs
+	 * @Param tabTri : tableau vide de taille égale à tab
+	 */
 	public static void tri(double[] tab, double[] tabTri) {
 		double valMax=0;
 		int indice=0;
@@ -44,14 +55,18 @@ public class Evalpapier {
 			double val = Math.random()*100;
 			tabInt[i] = (int)val;
 		}	
+		System.out.println("classement des entiers dans un nouveau tableau");
 		tri(tabInt, tabTriInt);		
 		for(int n=0; n<tabTriInt.length; n++) {
 			System.out.println("tabTriInt["+n+"] : "+tabTriInt[n]);
 		}	
+		System.out.println("##################################");
+		System.out.println("classement des décimaux dans un nouveau tableau");
 		tri(tabDouble, tabTriDouble);
 		for(int n=0; n<tabTriDouble.length; n++) {
 			System.out.println("tabTriDouble["+n+"] : "+tabTriDouble[n]);
 		}
+		System.out.println("##################################");
 		// associer 2 tableaux précedent dans un nouveau tableau
 		double[] resultat = new double[tabTriInt.length+tabTriDouble.length];
 		double[] resultatTrie = new double[tabTriInt.length+tabTriDouble.length];

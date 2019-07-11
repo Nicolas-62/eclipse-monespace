@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
-public class EvaluationScannerSimple {
+public class OperationsMathFichierScannerTest {
 	public static void main(String[] args) {
 
 		Scanner lecteur = null;

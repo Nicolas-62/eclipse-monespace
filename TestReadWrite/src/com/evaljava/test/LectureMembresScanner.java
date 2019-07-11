@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class LectureFichier {
+public class LectureMembresScanner {
 	public static void main(String[] args) {
 		Scanner sc = null;
 		try {

@@ -31,7 +31,7 @@ public class MainInterface {
 	    System.out.println(listPilote.get(0).nom);
 	    System.out.println();
 	    listPilote2.add(unPilote);
-	    listPilote2.add("dédé");
+	    listPilote2.add("dÃ©dÃ©");
 	   
 	}
 
