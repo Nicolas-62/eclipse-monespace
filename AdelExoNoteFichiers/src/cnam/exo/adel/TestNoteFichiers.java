@@ -1,4 +1,4 @@
-package exoNoteFichiers;
+package cnam.exo.adel;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,53 +16,56 @@ public class TestNoteFichiers {
 
 	public static void main(String[] args) throws IOException {
 
-		File monDossier = new File("C:\\Users\\adelk\\eclipse-workspace\\DevInfo\\src\\exoNoteFichiers\\mesFichiers");
-		
-		File fichierEntree = new File(monDossier,"notes.txt");
-		File fichierSortie = new File(monDossier,"totalDesNotes.txt");
-		
+		File monDossier = new File("mesFichiers/");
+
+		File fichierEntree = new File(monDossier, "notes.txt");
+		File fichierSortie = new File(monDossier, "totalDesNotes.txt");
+
 		BufferedReader entree;
 		PrintWriter sortie;
-		
+
 		String chaine;
 		
 		try {
-			entree = new BufferedReader( new InputStreamReader(new FileInputStream(fichierEntree),"Cp1252"));
-			
+			entree = new BufferedReader(
+						new InputStreamReader(
+							new FileInputStream(fichierEntree), "Cp1252"));
+			//lecture première ligne
 			chaine = entree.readLine();
-			
 			try {
-				sortie = new PrintWriter( new OutputStreamWriter(new FileOutputStream(fichierSortie),"UTF-8"));
-				
-				while(chaine != null) {
-					StringTokenizer st = new StringTokenizer(chaine,";");
-					
+				sortie = new PrintWriter(
+							new OutputStreamWriter(
+								new FileOutputStream(fichierSortie), "UTF-8"));
+				// lecture éléments de la ligne
+				while (chaine != null) {
+					StringTokenizer st = new StringTokenizer(chaine, ";");
+
 					String name = st.nextToken();
 					int totalNote = 0;
 					int somme = 0;
-					while(st.hasMoreTokens()) {
+					while (st.hasMoreTokens()) {
 						somme += Integer.parseInt(st.nextToken());
 						totalNote++;
 					}
-					sortie.println("Le total des "+totalNote+" notes de "+name+" est de : "+somme);
+					sortie.println("Le total des " + totalNote + " notes de " + name + " est de : " + somme);
+					// lecture ligne suivante
 					chaine = entree.readLine();
 				}
 				entree.close();
 				sortie.close();
-				
-				
-			}catch (FileNotFoundException e) {
-				
+
+			} catch (FileNotFoundException e) {
+
 			}
-			
+
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		
+		}
+
 	}
 
 }

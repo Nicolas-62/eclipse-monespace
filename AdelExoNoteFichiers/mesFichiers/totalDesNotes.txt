@@ -1,4 +1,4 @@
-Le total des 8 notes de CORNEILLE est de : 37
+Le total des 8 notes de CORNEILLE est de : 47
 Le total des 7 notes de ETOURNEAU est de : 107
 Le total des 13 notes de MESANGE BLEUE est de : 65
 Le total des 14 notes de MOINEAU est de : 12
