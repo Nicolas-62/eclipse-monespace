@@ -56,10 +56,11 @@ public class testsEntretiens {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		fizzBuzz();
-//		System.out.println(fibo(10));
-		String a = "hello ";
-		String b = "hollE";
-		caracteres(a, b);
+		System.out.println(fibo(10));
+//		String a = "hello ";
+//		String b = "hollE";
+//		caracteres(a, b);
+//		fizzBuzz();
 	}
 
 }

@@ -2,7 +2,33 @@ package com.noeud.java;
 
 // ma solution exercice sur les noeuds
 public class Node {
-	
+
+	public static void main(String[] args) {
+		// Construction arbre de noeuds
+		/*				8
+					  /   \
+					 6      13
+				   /  \    /  \
+			      4    7  10   15
+			     / \     / \   / \
+			    2   5   9  11 14 17
+	     */
+		Node n = new Node(8, 
+					new Node(6, 
+							new Node(4, 
+									new Node(2), 
+									new Node(5)), 
+							new Node(7)), 
+					new Node(13, 
+							new Node(10, 
+									new Node(9), 
+									new Node(11)), 
+							new Node(15, 
+									new Node(14),
+									new Node(17))));
+		// test recherche
+		System.out.println(n.find(14));
+	}
 	Node left, right;
 	int val;
 	
@@ -46,31 +72,6 @@ public class Node {
 	 * ayant pour valeur val ou null si aucun noeud ne possède cette valeur.
 	 * Vous devrez optimiser l'usage de la RAM
 	 */
-	public static void main(String[] args) {
-		// Construction arbre de noeuds
-		/*				8
-					  /   \
-					 6      13
-				   /  \    /  \
-			      4    7  10   15
-			     / \     / \   / \
-			    2   5   9  11 14 17
-	     */
-		Node n = new Node(8, 
-					new Node(6, 
-							new Node(4, 
-									new Node(2), 
-									new Node(5)), 
-							new Node(7)), 
-					new Node(13, 
-							new Node(10, 
-									new Node(9), 
-									new Node(11)), 
-							new Node(15, 
-									new Node(14),
-									new Node(17))));
-		// test recherche
-		System.out.println(n.find(14));
-	}
+
 
 }

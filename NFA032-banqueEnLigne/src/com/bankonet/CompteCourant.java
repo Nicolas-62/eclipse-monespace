@@ -3,12 +3,12 @@ package com.bankonet;
 public final class CompteCourant extends Compte{
 
 		private double montantDecouvertAutorise;
-//		public static int nbComptesCourants=0;
+		public static int nbComptesCourants=0;
 		
 		public CompteCourant(String unNumero, String unIntitule, double unSolde, double unMontantDecouvertAutorise) {
 			super(unNumero, unIntitule, unSolde);
 			this.montantDecouvertAutorise=unMontantDecouvertAutorise;
-//			nbComptesCourants++;
+			nbComptesCourants++;
 		}
 		public boolean debitAutorise(double montant) {
 			if(this.getSolde()-montant<this.montantDecouvertAutorise) {

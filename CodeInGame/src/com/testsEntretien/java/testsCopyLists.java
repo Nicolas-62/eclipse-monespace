@@ -46,6 +46,7 @@ public class testsCopyLists {
 		List<String> copy2 = list.stream()
 				  .filter(s -> s.length() > 10)
 				  .collect(Collectors.toList());
+		System.out.println("copy2 stream, skip"+copy2);
 		
 		Flower flo = new Flower(10);
 		List<Flower> listFlowers = new ArrayList<Flower>();
@@ -53,7 +54,7 @@ public class testsCopyLists {
 		listFlowers.add(flo);
 		
 		List<Flower> flowers = listFlowers.stream()
-				  .filter(f -> f.getPetals() > 6)
+				  .filter(f -> f.getPetals() > 3)
 				  .collect(Collectors.toList());
 		System.out.println("flowers : "+flowers);
 	}
