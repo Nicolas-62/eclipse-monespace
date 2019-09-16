@@ -37,7 +37,7 @@ public class Ascii {
     }
 
 
-    public static void test(String args[]) {
+    public static void soluce1(String args[]) {
         Scanner in = new Scanner(System.in);
         int L = in.nextInt();
         int H = in.nextInt();
@@ -108,5 +108,45 @@ public class Ascii {
         //System.out.println((int)'@');
         
     }
+    
+    public static void soluce2(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int L = in.nextInt();
+        int H = in.nextInt();
+        if (in.hasNextLine()) {
+            in.nextLine();
+        }
+        String T = in.nextLine();
+        T = T.toUpperCase();
+        String[] result = new String[H];
+        // pour chaque ligne de caractère acsii
+        for (int i = 0; i < H; i++) {
+            String ROW = in.nextLine();
+            // pour une ligne donnée :
+            // pour chaque caractère du message on récupère sa suite de # correspondant
+            for(int j =0; j < T.length(); j++){
+                // on crée la String
+                if(j==0){
+                    result[i] = new String();
+                }
+                // indice de la lettre dans la chaine de caractère ascii
+                // ex : A est la première lettre indice = 0;
+                int indice = T.codePointAt(j) - 65;
+                // si c'est un caractère spécial on prend le point d'interrogation en bout de chaine ascii
+                if(indice < 0 || indice > 25){
+                    indice=26;
+                }
+                result[i] += ROW.substring(indice*L, indice*L+L);
+            }
+            
+        }
+
+        // Write an action using System.out.println()
+        // To debug: System.err.println("Debug messages...");
+        // affichage du message
+        for(int h=0; h<result.length; h++){
+            System.out.println(result[h]);
+        }
+    }    
 
 }
