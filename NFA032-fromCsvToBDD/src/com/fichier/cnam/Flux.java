@@ -29,6 +29,8 @@ public class Flux {
 	}
 	// fontion qui génère un fichier de rapport de log et y écrit la liste de lignes à écrire passée en paramètre
 	public static void ecrireLog(List<String> listLog) {
+	    // la définition du writer doit se faire ici
+	    // pour des raisons de visibilité
 		BufferedWriter writer = null;
 		// récupération de la date actuelle
 		LocalDateTime date = LocalDateTime.now();
@@ -36,14 +38,26 @@ public class Flux {
 		String textDate = date.format(formatter);	
 		// ecriture du fichier
 		try {
+			// ouverture du flux de sortie
+			/* Notons que pour l'écriture dans des fichiers, la classe PrintWriter 
+			 * expose également un constructeur qui prend une instance de File. 
+			 * En l'utilisant on n'a donc pas besoin de construire soi-même l'instance de Writer.
+			 */
 			writer = new BufferedWriter(new FileWriter("traitement-"+textDate+".log"));
 			for(String ligne : listLog) {
 				writer.write(ligne);
 				writer.newLine();
+				// permet de vider le buffer
+				// ici nécessaire !!
+				// pas nécessaire si pas de buffer, la méthode close de FileWriter appelle elle-même flush()
+				writer.flush();
 			}			
 		}catch(IOException e) {
+			// affichage du message d'erreur et de la pile d'appel
 			System.out.println("erreur d'ecriture : "+e.getMessage());
+			e.printStackTrace();
 		}finally {
+			// il faut fermer le flux quoi qu'il arrive (erreur ou pas)
 			if(writer != null) {
 				try{
 					writer.close();
