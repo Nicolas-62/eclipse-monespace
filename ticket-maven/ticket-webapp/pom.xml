@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ticket-maven</artifactId>
+    <groupId>org.exemple.demo</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.exemple.demo</groupId>
+  <artifactId>ticket-webapp</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>ticket-webapp Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>org.exemple.demo</groupId>
+        <artifactId>ticket-business</artifactId>
+    </dependency>  
+    <dependency>
+        <groupId>org.exemple.demo</groupId>
+        <artifactId>ticket-model</artifactId>
+    </dependency>  
+    <!-- ajout d'une dépendance externe -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+        <!-- La dépendance vers commons-lang3 est exclue -->
+        <exclusions>
+          <exclusion>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+          </exclusion>  
+        </exclusions>     
+      <version>1.1</version>
+    </dependency>
+    <!-- gestion de cette dépendance de manière globale voir pom parent -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <!-- J'ai besoin de cette bibliothèque lors de la compilation pour créer une Servlet. Cependant, je ne dois pas l'avoir dans les WAR générés car elle entrerait en conflit avec celle fournie par le serveur d'application Java EE lors de l'éxécution. -->
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>1.1.0.Final</version>
+        <!--  J'ai besoin de cette bibliothèque lors de la compilation pour utiliser les annotations de cette API dans mes Beans -->
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.bval</groupId>
+        <artifactId>bval-jsr</artifactId>
+        <version>1.1.2</version>
+        <!--  Cette bibliothèque est une implémentation de l'API de validation de Bean (JSR 303). Mon code ne l'utilise pas directement, donc elle n'est pas nécessaire à la compilation. Cependant, à l'éxécution de l'application, une implémentation de l'API est nécessaire afin de procéder à la validation des Beans. -->
+        <scope>runtime</scope>
+    </dependency>    
+  </dependencies>
+
+  <build>
+    <finalName>ticket-webapp</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

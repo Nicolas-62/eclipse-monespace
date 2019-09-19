@@ -1,0 +1,64 @@
+NOTES :
+- Bill of Material -
+<!-- Il est courant qu'un framework soit composé de plusieurs modules (ex. : Spring®, Apache Struts™...). Dans ce cas, au lieu de définir, une par une, toutes les dépendances vers ces modules, il est possible d'utiliser, si elle existe, une « Bill Of Materials» (BOM). Il s'agit d'un fichier POM spécifique, mis à disposition par les mainteneurs du framework. Il contient la définition des dépendances fournies par celui-ci. -->
+<project>
+    ...
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>4.3.11.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+        ...
+    </dependencyManagement>
+    ...
+</project>
+- Versions SNAPSHOT et RELEASE -
+<!-- version SNAPSHOT : en cours de développement -->
+<!-- version RELEASE : version immuable -->
+- Les Propriétés - 
+<project>
+    ...
+    <!-- =============================================================== -->
+    <!-- Properties -->
+    <!-- =============================================================== -->
+    <properties>
+        <maPropriete>la valeur de la propriété</maPropriete>
+        <uneAutrePropriete>la valeur de la propriété</uneAutrePropriete>
+    </properties>
+    ...
+</project>
+<project>
+    ...
+    <properties>
+        <apache.struts.version>2.5.10.1</apache.struts.version>
+    </properties>
+    ...
+    <dependencies>
+        <!-- ===== Apache Struts ===== -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${apache.struts.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-json-plugin</artifactId>
+            <version>${apache.struts.version}</version>
+        </dependency>
+    </dependencies>
+    ...
+</project>
+
+<project>
+    <organization>
+        <name>1.0</name>
+    </organization>
+</project>
+<!-- est accessible via ${project.organization.name}. -->
+- Le SUPER POM -
+<!-- Ne vous étonnez donc pas si ${project.build.directory} vous renvoie une valeur alors que vous ne l'avez pas définie dans votre fichier pom.xml. Elle provient du Super POM ! -->

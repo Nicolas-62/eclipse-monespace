@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- =============================================================== -->
+  <!-- Informations du projet -->
+  <!-- =============================================================== -->
+  <!-- ===== Informations Maven ===== -->
+  <groupId>org.maven.demo</groupId>
+  <artifactId>mon-appli-maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <!-- ===== Informations Générales ===== -->
+  <name>mon-appli-maven</name>
+  <description>appli créée en suivant un tuto sur openClassRoom</description>
+  <url>https://openclassrooms.com/fr/courses/4503526-organisez-et-packagez-une-application-java-avec-apache-maven</url>
+
+  <!-- ===== Organisation ===== -->
+  <organization>
+      <name>Nicolas Lourdel</name>
+      <url>http://www.nlmonsite.ovh</url>
+  </organization>
+
+    <!-- ===== Licences ===== -->
+  <licenses>
+      <license>
+          <name>Apache License, Version 2.0</name>
+          <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+  </properties>
+  <!-- =============================================================== -->
+  <!-- Build -->
+  <!-- =============================================================== -->
+  <build>
+    <directory>${project.basedir}\output</directory>
+    <!-- Gestion des plugins (version) -->
+    <pluginManagement>
+        <plugins>
+            <!-- Plugin responsable de la génération du fichier JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <!-- Création du Manifest pour la définition de la classe Main -->
+                    <manifest>
+                        <mainClass>org.maven.demo.App</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+    <!-- gestion des ressources -->
+    <resources>
+        <resource>
+            <directory>src/main/resources/filtered</directory>
+            <filtering>true</filtering>
+        </resource>
+        <resource>
+            <directory>src/main/resources/raw</directory>
+            <filtering>false</filtering>
+        </resource>
+    </resources>  
+  </build>
+  <!-- =============================================================== -->
+  <!-- Profils -->
+  <!-- =============================================================== -->
+  <!-- # Pour construire un livrable pour l'environnement de test :
+  mvn package -P test
+
+  # Pour construire un livrable pour l'environnement de production :
+  mvn package -P prod !-->
+  <profiles>
+      <!-- Profil pour l'environnement de test -->
+      <profile>
+          <id>test</id>
+          <build>
+              <resources>
+                  <resource>
+                      <directory>src/main/resources/conf-test</directory>
+                  </resource>
+              </resources>
+          </build>
+      </profile>
+      <!-- Profil pour l'environnement de production -->
+      <profile>
+          <id>prod</id>
+          <build>
+              <resources>
+                  <resource>
+                      <directory>src/main/resources/conf-prod</directory>
+                  </resource>
+              </resources>
+          </build>
+      </profile>
+  </profiles>  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
