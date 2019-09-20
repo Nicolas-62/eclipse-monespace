@@ -10,14 +10,14 @@ import java.nio.CharBuffer;
 import java.nio.channels.FileChannel;
 public class LectureNio {
 
-	  public static void lecture() {
+	  public static void main(String[] args) {
 	    FileInputStream fis;
 	    BufferedInputStream bis;
 	    FileChannel fc;
 
 	    try {
 	      //Création des objets
-	      fis = new FileInputStream(new File("test.txt"));
+	      fis = new FileInputStream(new File("dictionnaire.txt"));
 	      bis = new BufferedInputStream(fis);
 	      //Démarrage du chrono
 	      long time = System.currentTimeMillis();
@@ -27,7 +27,7 @@ public class LectureNio {
 	      System.out.println("Temps d'exécution avec un buffer conventionnel : " + (System.currentTimeMillis() - time));
 				
 	      //Création d'un nouveau flux de fichier
-	      fis = new FileInputStream(new File("test.txt"));
+	      fis = new FileInputStream(new File("dictionnaire.txt"));
 	      //On récupère le canal
 	      fc = fis.getChannel();
 	      //On en déduit la taille
