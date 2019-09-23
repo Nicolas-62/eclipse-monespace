@@ -16,7 +16,8 @@ public class TestDate {
 		// formatage :
 		LocalDateTime localDateTime = LocalDateTime.now();
 		Date date = new Date();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_kk_mm_ss");
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_kk_mm_ss");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd LLLL yyyy");
 		String textDate = localDateTime.format(formatter);
 		System.out.println("Date : " + date);
 		System.out.println("LocalDateTime : " + localDateTime);
